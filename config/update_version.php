@@ -3,8 +3,9 @@
 // Hata görüntülemeyi aç
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
 /**
- * Simple PHP script to update the version number in version.txt based on directory hash changes
+ * Simple PHP script to update the version number in version.txt based on directory hash changes.
  * Türkçe Açıklama: Bu PHP betiği, dizindeki değişikliklere göre versiyon.txt dosyasını günceller.
  * Author: Ubden Community
  */
@@ -18,7 +19,7 @@ define('TARGET_DIR', __DIR__ . '/..'); // Klasör yolu
  */
 function getDirectoryHash($directory) {
     if (!is_dir($directory)) {
-        return false;
+        return array(); // Düzeltilmiş: Bir dizi döndür
     }
 
     $files = array();
@@ -27,7 +28,7 @@ function getDirectoryHash($directory) {
     while (false !== ($entry = $dir->read())) {
         if ($entry != '.' && $entry != '..') {
             if (is_dir($directory . '/' . $entry)) {
-                $files = array_merge($files, getDirectoryHash($directory . '/' . $entry));
+                $files = array_merge($files, getDirectoryHash($directory . '/' . $entry)); // Her zaman dizi döndür
             } else {
                 $files[] = $directory . '/' . $entry;
             }
@@ -42,7 +43,7 @@ function getDirectoryHash($directory) {
         $hash .= hash_file('sha1', $file);
     }
 
-    return sha1($hash);
+    return array(sha1($hash)); // Her zaman dizi döndür
 }
 
 /**
@@ -66,7 +67,7 @@ function updateVersion() {
         return;
     }
 
-    if ($current_sha !== $saved_sha) {
+    if ($current_sha[0] !== $saved_sha) {
         // SHA değişmiş, versiyonu güncelle
         $version = file_get_contents(VERSION_FILE);
         $version = trim($version);
@@ -79,7 +80,7 @@ function updateVersion() {
             $new_version = implode('.', $parts);
 
             file_put_contents(VERSION_FILE, $new_version);
-            file_put_contents(SHA_FILE, $current_sha);
+            file_put_contents(SHA_FILE, $current_sha[0]);
 
             echo "Version updated to: $new_version\n";
         } else {
