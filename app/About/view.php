@@ -19,7 +19,7 @@ require __DIR__ . '/../includes/header.php';
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-12 text-center">
-            <h1>Welcome to <?php echo $config['app']['app_name']; ?> - Version <?php echo getVersion(); ?></h1>
+        <h1><?php echo $message; ?></h1>
             <p class="lead">The best stable and newest PHP framework. Build your next application with ease and efficiency!</p>
         </div>
     </div>

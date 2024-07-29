@@ -15,8 +15,7 @@ require __DIR__ . '/../includes/header.php';
 ?>
 
 
-
-<h1 class="my-4">Welcome to <?php echo $config['app']['app_name']; ?> - Version <?php echo getVersion(); ?></h1>
+<h1><?php echo $message; ?></h1>
 <div class="card">
     <div class="card-header">
         Dashboard
