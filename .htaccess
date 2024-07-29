@@ -1,11 +1,8 @@
-</IfModule>
-RewriteEngine On
-RewriteCond %{REQUEST_URI} !^/assest/
-RewriteCond %{REQUEST_URI} !^/config/
-RewriteCond %{REQUEST_URI} !^/vendor/
-RewriteCond %{REQUEST_URI} !^/app/
-#RewriteCond %{REQUEST_URI} !^/public/
-RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|gif|svg|jpeg|ico)$
-# Redirect all requests to the public folder
-RewriteRule ^(.*)$ public/index.php [L]
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_URI} !^/assest/
+    RewriteCond %{REQUEST_URI} !^/config/
+    RewriteCond %{REQUEST_URI} !^/vendor/
+    # Redirect all requests to the public folder
+    RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>
