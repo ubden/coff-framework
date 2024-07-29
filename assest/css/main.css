@@ -26,3 +26,32 @@ footer {
     background-color: #f8f9fa;
 }
 
+/* app.css */
+
+/* Form container */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Form labels */
+.form-group label {
+    font-weight: bold;
+}
+
+/* Form input fields */
+.form-control {
+    border-radius: 0;
+}
+
+/* Submit button */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
