@@ -8,7 +8,6 @@
 // Sponsored Website: https://ubden.com
 // Version: ubden/coff-framework/version.txt
 // Release Date: 2024
-require __DIR__ . '/../includes/header.php'; 
 
 namespace App\Contact;
 
