@@ -4,7 +4,7 @@ RewriteCond %{REQUEST_URI} !^/assest/
 RewriteCond %{REQUEST_URI} !^/config/
 RewriteCond %{REQUEST_URI} !^/vendor/
 RewriteCond %{REQUEST_URI} !^/app/
-RewriteCond %{REQUEST_URI} !^/public/
+#RewriteCond %{REQUEST_URI} !^/public/
 RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|gif|svg|jpeg|ico)$
 # Redirect all requests to the public folder
 RewriteRule ^(.*)$ public/$1 [L]
