@@ -1,4 +1,3 @@
-
 <?php
 // Coff Framework
 // Created by Ubden Community
@@ -22,6 +21,5 @@ if (class_exists($handlerClass)) {
     $handler = new $handlerClass();
     $handler->handle();
 } else {
-    echo 'sayfa Bulunamadı';
+    echo '404 Not Found';
 }
-?>
