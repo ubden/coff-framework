@@ -16,7 +16,7 @@ require_once __DIR__ . '/../../config/config.php';
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Coff PHP Framework - Version <?php echo getVersion(); ?></title>
+    <title><?php echo $config['app']['app_name']; ?> - Version <?php echo getVersion(); ?></title>
     <meta name="description" content="Coff PHP Framework is a simple and lightweight PHP framework.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="/assest/images/coff_dev_ico.png" type="image/x-icon">
@@ -26,7 +26,7 @@ require_once __DIR__ . '/../../config/config.php';
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="./index.php">Coff Framework</a>
+            <a class="navbar-brand" href="./index.php"><?php echo getVersion(); ?></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
