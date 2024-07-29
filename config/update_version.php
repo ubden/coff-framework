@@ -8,16 +8,17 @@ ini_set('display_errors', 1);
  * Türkçe Açıklama: Bu PHP betiği, dizindeki değişikliklere göre versiyon.txt dosyasını günceller.
  * Author: Ubden Community
  */
-define('VERSION_FILE', __DIR__ . '/../version.txt'); // Versiyon dosyasının konumu
-define('SHA_FILE', __DIR__ . '/../version.sha');    // SHA değer dosyasının konumu
-define('TARGET_DIR', __DIR__ . '/..'); // Klasör yolu
+
+define('VERSION_FILE', __DIR__ . '/../config/version.txt');  // Versiyon dosyasının konumu
+define('SHA_FILE', __DIR__ . '/../config/version.sha');      // SHA değer dosyasının konumu
+define('TARGET_DIR', __DIR__ . '/..');                       // Klasör yolu
 
 /**
  * Dizindeki dosyaların SHA1 hash değerini hesaplayan fonksiyon
  */
 function getDirectoryHash($directory) {
     if (!is_dir($directory)) {
-        return array(); // Düzeltilmiş: Bir dizi döndür
+        return array(); // Bir dizi döndür
     }
 
     $files = array();
@@ -46,7 +47,7 @@ function getDirectoryHash($directory) {
         }
     }
 
-    return array(sha1($hash)); // Her zaman dizi döndür
+    return sha1($hash); // Sabit bir dize dönmek array array_merge hatasını ifmlaminas olabilir
 }
 
 /**
@@ -70,7 +71,11 @@ function updateVersion() {
         return;
     }
 
-    if ($current_sha[0] !== $saved_sha) {
+    // Debug point - Logging hashes for debugging
+    echo "Current SHA: $current_sha\n";
+    echo "Saved SHA: $saved_sha\n";
+
+    if ($current_sha !== $saved_sha) {
         // SHA değişmiş, versiyonu güncelle
         $version = file_get_contents(VERSION_FILE);
         $version = trim($version);
@@ -83,7 +88,7 @@ function updateVersion() {
             $new_version = implode('.', $parts);
 
             file_put_contents(VERSION_FILE, $new_version);
-            file_put_contents(SHA_FILE, $current_sha[0]);
+            file_put_contents(SHA_FILE, $current_sha);
 
             echo "Version updated to: $new_version\n";
         } else {
