@@ -1,13 +1,13 @@
 {
-    "name": "coff/framework",
-    "description": "A simple and understandable PHP framework.",
-    "require": {
-      "php": ">=7.4.0"
-    },
-    "autoload": {
-      "psr-4": {
-        "App\\": "app/"
-      }
+  "name": "coff/framework",
+  "description": "A simple and understandable PHP framework.",
+  "require": {
+    "php": ">=7.4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
     }
-  }
-  
+  },
+  "license": "proprietary"
+}
