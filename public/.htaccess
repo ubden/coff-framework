@@ -7,6 +7,4 @@ Options -Indexes
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
 
-    # Rewrite all other URLs to index.php
-    RewriteRule ^ index.php [L]
 </IfModule>
