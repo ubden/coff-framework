@@ -7,5 +7,5 @@ RewriteCond %{REQUEST_URI} !^/app/
 #RewriteCond %{REQUEST_URI} !^/public/
 RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|gif|svg|jpeg|ico)$
 # Redirect all requests to the public folder
-RewriteRule ^(.*)$ public/$1 [L]
+RewriteRule ^(.*)$ public/index.php [L]
 </IfModule>
