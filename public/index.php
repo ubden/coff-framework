@@ -22,6 +22,6 @@ if (class_exists($handlerClass)) {
     $handler = new $handlerClass();
     $handler->handle();
 } else {
-    echo '404 Not Found';
+    echo 'sayfa Bulunamadı';
 }
 ?>
