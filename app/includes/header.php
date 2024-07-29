@@ -9,15 +9,16 @@
 // Version: ubden/coff-framework/version.txt
 // Release Date: 2024
 // Framework Version
-$version = trim(file_get_contents(__DIR__ . '/../../version.txt'));
+// Include the configuration file
+require_once __DIR__ . '/../../config/config.php';
 ?>
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Coff Framework v<?php echo $version; ?></title>
+    <title>Coff PHP Framework - Version <?php echo getVersion(); ?></title>
+    <meta name="description" content="Coff PHP Framework is a simple and lightweight PHP framework.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="/assest/css/app.css">
     <script src="/assest/js/app.js" defer></script>
 </head>

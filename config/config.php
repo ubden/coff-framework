@@ -4,13 +4,22 @@
 // GitHub: https://github.com/ubden/coff-framework
 // Contributors: https://github.com/ck-cankurt
 // License: GNU GENERAL PUBLIC LICENSE
-// Framerwork Website: https://coff.dev
+// Framework Website: https://coff.dev
 // Sponsored Website: https://ubden.com
 // Version: ubden/coff-framework/version.txt
 // Release Date: 2024
 ?>
 
 <?php
+
+// Function to read version from version.txt
+function getVersion() {
+    $versionFile = __DIR__ . '/../version.txt';
+    if (file_exists($versionFile)) {
+        return trim(file_get_contents($versionFile));
+    }
+    return 'unknown';
+}
 
 return [
     // Database Settings
@@ -33,9 +42,13 @@ return [
 
     // App Settings
     'app' => [
+        'app_name'=> 'Coff PHP Framework',
         'base_url' => 'http://coff.dev',
         'environment' => 'development', // or 'production'
         'debug' => true,
+        'timezone' => 'Europe/Istanbul',
+        'locale' => 'tr_TR',
+        'version' => getVersion(),
     ],
 
     // Session Settings
