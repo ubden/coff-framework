@@ -17,13 +17,7 @@ class Handler
 {
     public function handle()
     {
-        $message = 'Welcome to Coff Framework Contact Page!';
-        require __DIR__ . '/view.php';
-    }
-}
-
-
-// Get the form data
+        // Get the form data
 $name = $_POST['name'];
 $email = $_POST['email'];
 $subject = $_POST['subject'];
@@ -38,4 +32,9 @@ echo "<p><strong>Name:</strong> $name</p>";
 echo "<p><strong>Email:</strong> $email</p>";
 echo "<p><strong>Subject:</strong> $subject</p>";
 echo "<p><strong>Message:</strong> $message</p>";
+
+
+        require __DIR__ . '/view.php';
+    }
+}
 
