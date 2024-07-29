@@ -1,6 +1,12 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    # Redirect root requests to the public folder
+    # Exclude the assets and other directories from redirection
+    RewriteCond %{REQUEST_URI} !^/assest/
+    RewriteCond %{REQUEST_URI} !^/config/
+    RewriteCond %{REQUEST_URI} !^/vendor/
+
+    # Redirect all other requests to the public directory
     RewriteRule ^$ public/ [L]
+    RewriteRule (.*) public/$1 [L]
 </IfModule>
