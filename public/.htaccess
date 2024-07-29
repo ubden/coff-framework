@@ -1,10 +1,13 @@
+Options -Indexes
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
+    RewriteBase /
 
-    # If a directory or a file exists, use it directly
+    # Allow access to existing files and directories
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
 
-    # Otherwise, redirect all requests to index.php
-    RewriteRule ^(.*)$ index.php?path=$1 [L,QSA]
+    # Rewrite all other URLs to index.php
+    RewriteRule . index.php [L]
 </IfModule>

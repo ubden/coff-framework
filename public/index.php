@@ -1,21 +1,18 @@
 <?php
-// Coff Framework
+// Coff PHP Framework
 // Created by Ubden Community
 // GitHub: https://github.com/ubden/coff-framework
 // Contributors: https://github.com/ck-cankurt
 // License: GNU GENERAL PUBLIC LICENSE
-// Framerwork Website: https://coff.dev
+// Framework Website: https://coff.dev
 // Sponsored Website: https://ubden.com
 // Version: ubden/coff-framework/version.txt
 // Release Date: 2024
-?>
 
-<?php
-
-require_once '../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 $path = !empty($_GET['path']) ? ucfirst($_GET['path']) : 'Home';
-$handlerClass = 'App\\' . $path . '\\handler';
+$handlerClass = 'App\\' . $path . '\\Handler';
 
 if (class_exists($handlerClass)) {
     $handler = new $handlerClass();
@@ -23,3 +20,4 @@ if (class_exists($handlerClass)) {
 } else {
     echo '404 Not Found';
 }
+?>
