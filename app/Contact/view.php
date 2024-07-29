@@ -18,7 +18,7 @@ require __DIR__ . '/../includes/header.php';
     <h2>Contact Us</h2>
     <p>If you have any questions, feel free to contact us by filling out the form below.</p>
     
-    <form action="/handler.php" method="post" class="mt-4">
+    <form action=".\handler.php" method="post" class="mt-4">
         <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" class="form-control" id="name" name="name" required>
@@ -45,4 +45,3 @@ require_once __DIR__ . '/../includes/footer.php';
 ?>
 
 
-<?php require __DIR__ . '/../includes/footer.php'; ?>
