@@ -9,7 +9,6 @@
 // Version: ubden/coff-framework/version.txt
 // Release Date: 2024
 ?>
-
 <?php
 
 namespace App\About;
@@ -22,4 +21,3 @@ class Handler
         require __DIR__ . '/view.php';
     }
 }
-

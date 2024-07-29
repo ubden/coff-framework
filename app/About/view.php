@@ -10,16 +10,6 @@
 // Release Date: 2024
 ?>
 
-<?php
-
-namespace App\About;
-
-class Handler
-{
-    public function handle()
-    {
-        $message = 'Welcome to Coff Framework About Page!';
-        require __DIR__ . '/view.php';
-    }
-}
-
+<?php require __DIR__ . '/../includes/header.php'; ?>
+<h1><?php echo $message; ?></h1>
+<?php require __DIR__ . '/../includes/footer.php'; ?>
