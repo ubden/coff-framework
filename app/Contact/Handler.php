@@ -14,7 +14,7 @@ namespace App\Contact;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-class handler
+class Handler
 {
     public function handle()
     {
