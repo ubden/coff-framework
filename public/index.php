@@ -24,3 +24,4 @@ if (class_exists($handlerClass)) {
 } else {
     echo '404 Not Found';
 }
+?>
