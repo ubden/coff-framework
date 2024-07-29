@@ -55,4 +55,6 @@ coff.dev/
 ├── .htaccess
 └── composer.json
 
+<p>&copy; 2024 Coff Framework - Version <?php echo $version; ?></p>
+
 <?php require '../includes/footer.php'; ?>

@@ -8,6 +8,7 @@
 // Sponsored Website: https://ubden.com
 // Version: ubden/coff-framework/version.txt
 // Release Date: 2024
+$version = trim(file_get_contents('.../version.txt'));
 ?>
 
 <!DOCTYPE html>
@@ -15,8 +16,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Coff Framework</title>
-    <link rel="stylesheet" href="/assets/css/app.css">
-    <script src="/assets/js/app.js" defer></script>
+    <link rel="stylesheet" href="./assets/css/app.css">
+    <script src="./assets/js/app.js" defer></script>
 </head>
 <body>
     <header>
@@ -29,3 +30,4 @@
         </nav>
     </header>
     <main>
+    
