@@ -1,5 +1,5 @@
 <?php
-// Coff Framework
+// Coff PHP Framework
 // Created by Ubden Community
 // GitHub: https://github.com/ubden/coff-framework
 // Contributors: https://github.com/ck-cankurt
