@@ -1,7 +1,18 @@
 <?php
+// Coff Framework
+// Created by Ubden Community
+// GitHub: https://github.com/ubden/coff-framework
+// Contributors: https://github.com/ck-cankurt
+// License: GNU GENERAL PUBLIC LICENSE
+// Framework Website: https://coff.dev
+// Sponsored Website: https://ubden.com
+// Version: ubden/coff-framework/version.txt
+// Release Date: 2024
 // Framework Version
 $version = trim(file_get_contents(__DIR__ . '/../../version.txt'));
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +45,7 @@ $version = trim(file_get_contents(__DIR__ . '/../../version.txt'));
                     </li>
                 </ul>
                 <span class="navbar-text">
-                    <a href="https://github.com/ubden/coff-framework" target="_blank">Coff PHP Framework</a>
+                    <a href="https://github.com/ubden/coff-framework" target="_blank">ubden/coff-framework</a>
                 </span>
             </div>
         </nav>

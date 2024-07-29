@@ -11,14 +11,20 @@
 ?>
 
 <?php require __DIR__ . '/../includes/header.php'; ?>
-
-
-<h1><?php echo $message; ?></h1>
-<p>Coff Framework is a powerful and lightweight PHP framework designed to simplify web development. It provides a robust set of features and tools to help you build scalable and efficient web applications.</p>
-<p>With Coff Framework, you can easily handle routing, database operations, form validation, and much more. It follows the MVC (Model-View-Controller) architectural pattern, making it easy to organize your code and separate concerns.</p>
-<p>Whether you are a beginner or an experienced developer, Coff Framework offers a clean and intuitive syntax that allows you to write code quickly and efficiently. It also comes with extensive documentation and a supportive community, making it easy to get started and find help when needed.</p>
-<p>Start building your next web application with Coff Framework and experience the joy of efficient and elegant PHP development!</p>
-
-
-
+<h1 class="my-4">Welcome to Coff Framework</h1>
+<div class="card">
+    <div class="card-header">
+        Dashboard
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Framework Features</h5>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Simple and understandable structure</li>
+            <li class="list-group-item">Modular and scalable design</li>
+            <li class="list-group-item">Built-in support for popular libraries</li>
+            <li class="list-group-item">Easy configuration management</li>
+            <li class="list-group-item">Version control with automatic updates</li>
+        </ul>
+    </div>
+</div>
 <?php require __DIR__ . '/../includes/footer.php'; ?>
