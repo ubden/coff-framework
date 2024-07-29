@@ -12,6 +12,7 @@
 // Include the configuration file
 $config = require_once __DIR__ . '/../../config/config.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>

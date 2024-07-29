@@ -8,8 +8,6 @@
 // Sponsored Website: https://ubden.com
 // Version: ubden/coff-framework/version.txt
 // Release Date: 2024
-?>
-<?php
 
 namespace App\About;
 

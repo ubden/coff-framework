@@ -11,14 +11,13 @@
 
 // Include the header file
 require __DIR__ . '/../includes/header.php'; 
-
 ?>
 
 <div class="container mt-5">
     <h2>Contact Us</h2>
     <p>If you have any questions, feel free to contact us by filling out the form below.</p>
     
-    <form action=".\handler.php" method="post" class="mt-4">
+    <form action="handler.php" method="post" class="mt-4">
         <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" class="form-control" id="name" name="name" required>
@@ -43,5 +42,3 @@ require __DIR__ . '/../includes/header.php';
 // Include the footer
 require_once __DIR__ . '/../includes/footer.php';
 ?>
-
-
