@@ -19,6 +19,7 @@ require_once __DIR__ . '/../../config/config.php';
     <title>Coff PHP Framework - Version <?php echo getVersion(); ?></title>
     <meta name="description" content="Coff PHP Framework is a simple and lightweight PHP framework.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="/assest/images/coff_dev_ico.png" type="image/x-icon">
     <link rel="stylesheet" href="/assest/css/app.css">
     <script src="/assest/js/app.js" defer></script>
 </head>
