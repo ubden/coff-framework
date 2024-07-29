@@ -10,7 +10,7 @@
 // Release Date: 2024
 ?>
 
-<?php require '../includes/header.php'; ?>
+<?php require __DIR__ . '/../includes/header.php'; ?>
 
 <h1><?php echo $message; ?></h1>
 <p>Welcome to the Coff PHP Framework!</p>
@@ -57,4 +57,5 @@ coff.dev/
 
 <p>&copy; 2024 Coff Framework - Version <?php echo $version; ?></p>
 
-<?php require '../includes/footer.php'; ?>
+<?php require __DIR__ . '/../includes/footer.php'; ?>
+

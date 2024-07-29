@@ -8,7 +8,7 @@
 // Sponsored Website: https://ubden.com
 // Version: ubden/coff-framework/version.txt
 // Release Date: 2024
-$version = trim(file_get_contents('.../version.txt'));
+$version = trim(file_get_contents(__DIR__ . '/../../version.txt'));
 ?>
 
 <!DOCTYPE html>
