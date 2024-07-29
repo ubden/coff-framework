@@ -1,5 +1,5 @@
 <?php
-// Coff PHP Framework
+// Coff Framework
 // Created by Ubden Community
 // GitHub: https://github.com/ubden/coff-framework
 // Contributors: https://github.com/ck-cankurt
@@ -60,8 +60,4 @@ class Handler
         require __DIR__ . '/view.php';
     }
 }
-
-// Initialize and handle the contact form submission
-$handler = new Handler();
-$handler->handle();
 ?>
