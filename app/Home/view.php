@@ -10,7 +10,7 @@
 // Release Date: 2024
 ?>
 
-<?php require __DIR__ . 'app/includes/header.php'; ?>
+<?php require __DIR__ . '/../includes/header.php'; ?>
 <h1 class="my-4">Welcome to Coff Framework</h1>
 <div class="card">
     <div class="card-header">
