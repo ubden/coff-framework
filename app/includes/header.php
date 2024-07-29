@@ -1,5 +1,5 @@
 <?php
-// Coff Framework
+// Coff PHP Framework
 // Created by Ubden Community
 // GitHub: https://github.com/ubden/coff-framework
 // Contributors: https://github.com/ck-cankurt
@@ -26,7 +26,7 @@ require_once __DIR__ . '/../../config/config.php';
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="./index.php"><?php echo getVersion(); ?></a>
+            <a class="navbar-brand" href="./index.php"><?php echo $config['app']['app_name']; ?> - Version <?php echo getVersion(); ?></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
