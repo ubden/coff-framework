@@ -23,9 +23,16 @@ function getDirectoryHash($directory) {
     $dirIterator = new RecursiveDirectoryIterator($directory, RecursiveDirectoryIterator::SKIP_DOTS);
     $iterator = new RecursiveIteratorIterator($dirIterator, RecursiveIteratorIterator::SELF_FIRST);
 
+    // Hariç tutulacak dosya ve dizinler
+    $excluded = ['/vendor', '/node_modules', '/.git'];
+
     foreach ($iterator as $file) {
-        if ($file->isFile()) {
-            $files[] = $file->getPathname();
+        $filePath = $file->getPathname();
+        $relativePath = str_replace($directory, '', $filePath);
+
+        // Dosya veya dizin hariç tutulacaklar listesinde değilse ekle
+        if ($file->isFile() && !in_array($relativePath, $excluded)) {
+            $files[] = $filePath;
         }
     }
 
