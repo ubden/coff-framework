@@ -25,6 +25,7 @@ class Handler
 
         $config = require __DIR__ . '/../../config/config.php';
         $message = 'Welcome to Coff Framework Contact Page!';
+        file_put_contents(__DIR__.'/../../logs/debug.log', "Handler Invoked." . PHP_EOL, FILE_APPEND);
 
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {

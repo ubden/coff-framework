@@ -11,9 +11,6 @@
 // Framework Version
 // Include the configuration file
 $config = require_once __DIR__ . '/../../config/config.php';
-function log_message($logmessage) {
-    file_put_contents(__DIR__.'/../../logs/debug.log', "Log Message" . PHP_EOL, FILE_APPEND);
-}
 ?>
 <!DOCTYPE html>
 <html lang="tr">
