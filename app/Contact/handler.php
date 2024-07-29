@@ -1,5 +1,5 @@
 <?php
-// Coff PHP Framework
+// Coff Framework
 // Created by Ubden Community
 // GitHub: https://github.com/ubden/coff-framework
 // Contributors: https://github.com/ck-cankurt
@@ -14,7 +14,7 @@ namespace App\Contact;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-class Handler
+class handler
 {
     public function handle()
     {
