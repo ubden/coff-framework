@@ -29,9 +29,8 @@ Welcome to Coff PHP Framework! A modern PHP framework designed for speed and eff
 
 Have questions or need support? Feel free to reach out!
 
-- **Name:** [Your Name]
-- **Email:** [Your Email]
-- **Message:** [Your Message]
+- **Name:** Ubden Developer Community (coff.dev)
+- **Email:** info@coff.dev
 
-For more details, visit our [website](#) or open an issue on our GitHub page.
+For more details, visit our [website](https://coff.dev) or open an issue on our GitHub page.
 
