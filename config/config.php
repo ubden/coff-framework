@@ -1,7 +1,7 @@
 <?php
 
 return [
-    // Veritabanı Ayarları
+    // Database Settings
     'db' => [
         'host' => 'localhost',
         'name' => 'coff',
@@ -10,7 +10,7 @@ return [
         'charset' => 'utf8mb4',
     ],
 
-    // SMTP Ayarları
+    // SMTP Settings
     'smtp' => [
         'host' => 'smtp.example.com',
         'user' => 'user@example.com',
@@ -19,14 +19,14 @@ return [
         'encryption' => 'tls',
     ],
 
-    // Uygulama Ayarları
+    // App Settings
     'app' => [
         'base_url' => 'http://coff.dev',
         'environment' => 'development', // or 'production'
         'debug' => true,
     ],
 
-    // Diğer Ayarlar
+    // Session Settings
     'session' => [
         'session_name' => 'coff_session',
         'session_lifetime' => 3600,

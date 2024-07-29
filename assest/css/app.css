@@ -1,0 +1,8 @@
+/* Bootstrap */
+@import url('bootstrap.min.css');
+
+/* FontAwesome */
+@import url('fontawesome.min.css');
+
+/* Custom Styles */
+@import url('main.css');
