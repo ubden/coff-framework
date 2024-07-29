@@ -1,13 +1,12 @@
+</IfModule>
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
-
-    # Exclude the assets and other directories from redirection
-    RewriteCond %{REQUEST_URI} !^/assest/
-    RewriteCond %{REQUEST_URI} !^/config/
-    RewriteCond %{REQUEST_URI} !^/vendor/
-    RewriteCond %{REQUEST_URI} !^/app/
-
-    # Redirect all other requests to the public directory
-    RewriteRule ^$ public/ [L]
-    RewriteRule (.*) public/$1 [L]
+     # Exclude the assets and other directories from redirection
+     RewriteCond %{REQUEST_URI} !^/assest/
+     RewriteCond %{REQUEST_URI} !^/config/
+     RewriteCond %{REQUEST_URI} !^/vendor/
+     RewriteCond %{REQUEST_URI} !^/app/
+    # Redirect all requests to the public folder
+    RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>
