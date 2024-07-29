@@ -36,7 +36,3 @@ class Handler
         }
     }
 }
-
-// Initialize and handle the contact form submission
-$handler = new Handler();
-$handler->handle();
