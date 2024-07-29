@@ -2,12 +2,12 @@ Options -Indexes
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /public/
+    RewriteBase /
 
-    # Allow access to public directory files directly
+    # Allow access to existing files and directories
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
 
     # Rewrite all other URLs to index.php
-    RewriteRule . index.php [L]
+    RewriteRule ^ index.php [L]
 </IfModule>
