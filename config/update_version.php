@@ -1,15 +1,13 @@
 <?php
-
 // Hata görüntülemeyi aç
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 /**
- * Simple PHP script to update the version number in version.txt based on directory hash changes.
+ * Simple PHP script to update the version number in version.txt based on directory hash changes
  * Türkçe Açıklama: Bu PHP betiği, dizindeki değişikliklere göre versiyon.txt dosyasını günceller.
  * Author: Ubden Community
  */
-
 define('VERSION_FILE', __DIR__ . '/../version.txt'); // Versiyon dosyasının konumu
 define('SHA_FILE', __DIR__ . '/../version.sha');    // SHA değer dosyasının konumu
 define('TARGET_DIR', __DIR__ . '/..'); // Klasör yolu
@@ -40,7 +38,12 @@ function getDirectoryHash($directory) {
     $hash = '';
 
     foreach ($files as $file) {
-        $hash .= hash_file('sha1', $file);
+        // Eğer dosya yoksa hata almamak için kontrol ediyoruz
+        if (file_exists($file) && is_file($file)) {
+            $hash .= hash_file('sha1', $file);
+        } else {
+            echo "Warning: $file does not exist or is not a file.\n";
+        }
     }
 
     return array(sha1($hash)); // Her zaman dizi döndür
