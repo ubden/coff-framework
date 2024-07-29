@@ -25,6 +25,9 @@ Welcome to Coff PHP Framework! A modern PHP framework designed for speed and eff
 - **Flexibility:** Coff offers a more flexible and minimalistic approach, while Symfony provides a more structured and feature-complete framework.
 - **Community:** Symfony has a larger and more established community, while Coff provides a streamlined approach with less overhead.
 
+- **Folder Structure:**
+![Ödeme Paneli Ekran Görüntüsü](https://coff.dev/yapi.png)
+
 ## Contact Us
 
 Have questions or need support? Feel free to reach out!
