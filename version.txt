@@ -1,2 +1,1 @@
-touch coff.dev/version.txt
-echo "1.0.0" > coff.dev/version.txt
+1.0.0
