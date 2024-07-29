@@ -16,7 +16,7 @@
 require_once '../vendor/autoload.php';
 
 $path = !empty($_GET['path']) ? ucfirst($_GET['path']) : 'Home';
-$handlerClass = 'App\\' . $path . '\\Handler';
+$handlerClass = 'App\\' . $path . '\\handler';
 
 if (class_exists($handlerClass)) {
     $handler = new $handlerClass();
