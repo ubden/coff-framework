@@ -9,25 +9,32 @@ ini_set('display_errors', 1);
  * Author: Ubden Community
  */
 
+// Adjust these paths according to your directory structure
 define('VERSION_FILE', __DIR__ . '/../version.txt');  // Versiyon dosyasının konumu
 define('SHA_FILE', __DIR__ . '/../version.sha');      // SHA değer dosyasının konumu
 define('TARGET_DIR', __DIR__ . '/..');                       // Klasör yolu
 
-/**
- * Dizindeki dosyaların SHA1 hash değerini hesaplayan fonksiyon
- */
+// Check if the paths are correctly set
+echo "Current directory: " . __DIR__ . "\n";
+echo "Version file path: " . VERSION_FILE . "\n";
+echo "SHA file path: " . SHA_FILE . "\n";
+echo "Target directory: " . TARGET_DIR . "\n";
+
 function getDirectoryHash($directory) {
     if (!is_dir($directory)) {
-        return array(); // Bir dizi döndür
+        return []; // bir array dönmek ifdir değilse eklenmiştir
     }
 
-    $files = array();
+    $files = [];
     $dir = dir($directory);
 
     while (false !== ($entry = $dir->read())) {
         if ($entry != '.' && $entry != '..') {
             if (is_dir($directory . '/' . $entry)) {
-                $files = array_merge($files, getDirectoryHash($directory . '/' . $entry)); // Her zaman dizi döndür
+                $sub_dir_files = getDirectoryHash($directory . '/' . $entry); // salário sub me
+                if (is_array($sub_dir_files)){
+                    $files = array_merge($files, $sub_dir_files); // Hala array merge
+                }
             } else {
                 $files[] = $directory . '/' . $entry;
             }
@@ -35,11 +42,10 @@ function getDirectoryHash($directory) {
     }
     $dir->close();
 
-    sort($files); // Dosyaları sıralıyoruz ki aynı dosyaların hash'i aynı olsun
+    sort($files);
     $hash = '';
 
     foreach ($files as $file) {
-        // Eğer dosya yoksa hata almamak için kontrol ediyoruz
         if (file_exists($file) && is_file($file)) {
             $hash .= hash_file('sha1', $file);
         } else {
@@ -47,12 +53,9 @@ function getDirectoryHash($directory) {
         }
     }
 
-    return sha1($hash); // Sabit bir dize dönmek array array_merge hatasını ifmlaminas olabilir
+    return $hash === '' ? [] : [sha1($hash)]; // boş string dönmemesi için check yaparkaşu [] focus arrayygur)
 }
 
-/**
- * Versiyon güncelleme fonksiyonu
- */
 function updateVersion() {
     if (!file_exists(VERSION_FILE)) {
         echo "Version file does not exist.\n";
@@ -63,7 +66,7 @@ function updateVersion() {
         file_put_contents(SHA_FILE, '');
     }
 
-    $current_sha = getDirectoryHash(TARGET_DIR);
+    $current_sha = getDirectoryHash(TARGET_DIR)[0] ?? '';
     $saved_sha = trim(file_get_contents(SHA_FILE));
 
     if ($current_sha === false) {
@@ -71,19 +74,15 @@ function updateVersion() {
         return;
     }
 
-    // Debug point - Logging hashes for debugging
     echo "Current SHA: $current_sha\n";
     echo "Saved SHA: $saved_sha\n";
 
     if ($current_sha !== $saved_sha) {
-        // SHA değişmiş, versiyonu güncelle
         $version = file_get_contents(VERSION_FILE);
         $version = trim($version);
 
         if (preg_match('/^\d+(\.\d+)*$/', $version)) {
             $parts = explode('.', $version);
-
-            // Increment the last part
             $parts[count($parts) - 1]++;
             $new_version = implode('.', $parts);
 
