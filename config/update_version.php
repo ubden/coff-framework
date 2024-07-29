@@ -1,4 +1,8 @@
 <?php
+
+// Hata görüntülemeyi aç
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 /**
  * Simple PHP script to update the version number in version.txt based on directory hash changes
  * Türkçe Açıklama: Bu PHP betiği, dizindeki değişikliklere göre versiyon.txt dosyasını günceller.
@@ -87,5 +91,4 @@ function updateVersion() {
 }
 
 updateVersion();
-
 ?>
