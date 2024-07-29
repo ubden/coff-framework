@@ -13,7 +13,7 @@
 
 namespace App\About;
 
-class handler
+class Handler
 {
     public function handle()
     {
