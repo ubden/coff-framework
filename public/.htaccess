@@ -9,5 +9,6 @@ Options -Indexes
     RewriteCond %{REQUEST_FILENAME} !-d
 
     # Rewrite all other URLs to index.php
-    RewriteRule . index.php [L]
+    # Otherwise, redirect all requests to index.php
+    RewriteRule ^(.*)$ index.php?path=$1 [L,QSA]
 </IfModule>
