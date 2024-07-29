@@ -15,7 +15,7 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-12 text-center">
-            <h1>Welcome to Coff Framework</h1>
+            <h1>Welcome to <?php echo $config['app']['app_name']; ?> - Version <?php echo getVersion(); ?></h1>
             <p class="lead">The best stable and newest PHP framework. Build your next application with ease and efficiency!</p>
         </div>
     </div>
@@ -26,7 +26,7 @@
                     <h4 class="my-0 font-weight-normal">Easy Routing</h4>
                 </div>
                 <div class="card-body">
-                    <p>Coff Framework offers a simple yet powerful routing system, making it easy to create friendly URLs for your application.</p>
+                    <p><?php echo $config['app']['app_name']; ?> - Version <?php echo getVersion(); ?>offers a simple yet powerful routing system, making it easy to create friendly URLs for your application.</p>
                 </div>
             </div>
         </div>
