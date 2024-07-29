@@ -12,48 +12,31 @@ ini_set('display_errors', 1);
 // Adjust these paths according to your directory structure
 define('VERSION_FILE', __DIR__ . '/../version.txt');  // Versiyon dosyasının konumu
 define('SHA_FILE', __DIR__ . '/../version.sha');      // SHA değer dosyasının konumu
-define('TARGET_DIR', __DIR__ . '/..');                       // Klasör yolu
-
-// Check if the paths are correctly set
-echo "Current directory: " . __DIR__ . "\n";
-echo "Version file path: " . VERSION_FILE . "\n";
-echo "SHA file path: " . SHA_FILE . "\n";
-echo "Target directory: " . TARGET_DIR . "\n";
+define('TARGET_DIR', __DIR__ . '/..');                // Klasör yolu
 
 function getDirectoryHash($directory) {
     if (!is_dir($directory)) {
-        return []; // bir array dönmek ifdir değilse eklenmiştir
+        return false; // Eğer dizin yoksa false döner
     }
 
     $files = [];
-    $dir = dir($directory);
+    $dirIterator = new RecursiveDirectoryIterator($directory, RecursiveDirectoryIterator::SKIP_DOTS);
+    $iterator = new RecursiveIteratorIterator($dirIterator, RecursiveIteratorIterator::SELF_FIRST);
 
-    while (false !== ($entry = $dir->read())) {
-        if ($entry != '.' && $entry != '..') {
-            if (is_dir($directory . '/' . $entry)) {
-                $sub_dir_files = getDirectoryHash($directory . '/' . $entry); // salário sub me
-                if (is_array($sub_dir_files)){
-                    $files = array_merge($files, $sub_dir_files); // Hala array merge
-                }
-            } else {
-                $files[] = $directory . '/' . $entry;
-            }
+    foreach ($iterator as $file) {
+        if ($file->isFile()) {
+            $files[] = $file->getPathname();
         }
     }
-    $dir->close();
 
-    sort($files);
+    sort($files); // Dosyaları alfabetik olarak sırala
     $hash = '';
 
     foreach ($files as $file) {
-        if (file_exists($file) && is_file($file)) {
-            $hash .= hash_file('sha1', $file);
-        } else {
-            echo "Warning: $file does not exist or is not a file.\n";
-        }
+        $hash .= hash_file('sha1', $file);
     }
 
-    return $hash === '' ? [] : [sha1($hash)]; // boş string dönmemesi için check yaparkaşu [] focus arrayygur)
+    return sha1($hash);
 }
 
 function updateVersion() {
@@ -66,7 +49,7 @@ function updateVersion() {
         file_put_contents(SHA_FILE, '');
     }
 
-    $current_sha = getDirectoryHash(TARGET_DIR)[0] ?? '';
+    $current_sha = getDirectoryHash(TARGET_DIR);
     $saved_sha = trim(file_get_contents(SHA_FILE));
 
     if ($current_sha === false) {
@@ -97,6 +80,12 @@ function updateVersion() {
         echo "No changes detected. Version remains unchanged.\n";
     }
 }
+
+// Check if the paths are correctly set
+echo "Current directory: " . __DIR__ . "\n";
+echo "Version file path: " . VERSION_FILE . "\n";
+echo "SHA file path: " . SHA_FILE . "\n";
+echo "Target directory: " . TARGET_DIR . "\n";
 
 updateVersion();
 ?>
