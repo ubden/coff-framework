@@ -10,4 +10,12 @@
     }
   },
   "license": "proprietary"
+
+  {
+    "require": {
+        "phpmailer/phpmailer": "^6.5",
+        "guzzlehttp/guzzle": "^7.3",
+        "vlucas/valitron": "^1.4"
+    }
+} 
 }
