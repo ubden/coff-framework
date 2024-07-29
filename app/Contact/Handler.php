@@ -8,6 +8,7 @@
 // Sponsored Website: https://ubden.com
 // Version: ubden/coff-framework/version.txt
 // Release Date: 2024
+require __DIR__ . '/../includes/header.php'; 
 
 namespace App\Contact;
 
@@ -18,8 +19,13 @@ class Handler
 {
     public function handle()
     {
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
+
         $config = require __DIR__ . '/../../config/config.php';
         $message = 'Welcome to Coff Framework Contact Page!';
+
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $name = $_POST['name'];
@@ -52,8 +58,10 @@ class Handler
 
                 $mail->send();
                 $message = 'Message has been sent successfully';
+                file_put_contents(__DIR__.'/../../logs/debug.log', "Email sent successfully." . PHP_EOL, FILE_APPEND);
             } catch (Exception $e) {
                 $message = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                file_put_contents(__DIR__.'/../../logs/debug.log', "Mailer Error: {$mail->ErrorInfo}." . PHP_EOL, FILE_APPEND);
             }
         }
 
