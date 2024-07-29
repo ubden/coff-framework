@@ -9,8 +9,8 @@ ini_set('display_errors', 1);
  * Author: Ubden Community
  */
 
-define('VERSION_FILE', __DIR__ . '/../config/version.txt');  // Versiyon dosyasının konumu
-define('SHA_FILE', __DIR__ . '/../config/version.sha');      // SHA değer dosyasının konumu
+define('VERSION_FILE', __DIR__ . '/../version.txt');  // Versiyon dosyasının konumu
+define('SHA_FILE', __DIR__ . '/../version.sha');      // SHA değer dosyasının konumu
 define('TARGET_DIR', __DIR__ . '/..');                       // Klasör yolu
 
 /**
