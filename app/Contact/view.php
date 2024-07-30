@@ -1,13 +1,5 @@
 <?php
-// Coff PHP Framework
-// Created by Ubden Community
-// GitHub: https://github.com/ubden/coff-framework
-// Contributors: https://github.com/ck-cankurt
-// License: GNU GENERAL PUBLIC LICENSE
-// Framework Website: https://coff.dev
-// Sponsored Website: https://ubden.com
-// Version: ubden/coff-framework/version.txt
-// Release Date: 2024
+session_start();  // Start the session
 
 // Include the header file
 require __DIR__ . '/../includes/header.php'; 
@@ -15,9 +7,20 @@ require __DIR__ . '/../includes/header.php';
 ?>
 
 <div class="container mt-5">
-    <h1><?php echo $head; ?></h1>
+    <h1>Welcome to Coff Framework Contact Page!</h1>
     <p>If you have any questions, feel free to contact us by filling out the form below.</p>
-    
+
+    <!-- Display session message if any -->
+    <?php if(isset($_SESSION['message'])): ?>
+        <div class="alert alert-<?php echo $_SESSION['message_type']; ?>" role="alert">
+            <?php
+            echo $_SESSION['message'];
+            unset($_SESSION['message']); // Clear the session message
+            unset($_SESSION['message_type']); // Clear the session message type
+            ?>
+        </div>
+    <?php endif; ?>
+
     <form action="/?path=Contact" method="post" class="mt-4">
         <div class="form-group">
             <label for="name">Name:</label>

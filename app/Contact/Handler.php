@@ -1,4 +1,6 @@
 <?php
+session_start();  // Start the session at the very beginning
+
 // Coff PHP Framework
 // Created by Ubden Community
 // GitHub: https://github.com/ubden/coff-framework
@@ -51,13 +53,19 @@ class Handler
                 $mail->Body = nl2br("Name: $name\nEmail: $email\n\n$message");
 
                 $mail->send();
+                $_SESSION['message'] = 'Email sent successfully.';
+                $_SESSION['message_type'] = 'success';
                 log_message("Email sent successfully to {$email}.", "info");
             } catch (Exception $e) {
+                $_SESSION['message'] = 'Failed to send email: ' . $mail->ErrorInfo;
+                $_SESSION['message_type'] = 'danger';
                 log_message("Mailer Error: {$mail->ErrorInfo}", "error");
             }
         }
 
-        require __DIR__ . '/view.php';
+        // Redirect to prevent form resubmission
+        header('Location: view.php');
+        exit();
     }
 
     // Configure PHPMailer
@@ -72,4 +80,8 @@ class Handler
         $mail->Port = $smtp['smtp']['port'];
     }
 }
+
+// Instantiate and handle the contact form submission
+$handler = new Handler();
+$handler->handle();
 ?>
