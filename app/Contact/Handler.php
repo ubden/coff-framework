@@ -22,8 +22,8 @@ class Handler
         ini_set('display_startup_errors', 1);
         error_reporting(E_ALL);
         $head = 'Welcome to Coff Framework Contact Page!';
-        $config = require __DIR__ . '/../../config/smtp.php';
-if (!isset($config)) {
+        $smtp = require __DIR__ . '/../../config/smtp.php';
+if (!isset($smtp)) {
     die('Configuration file is missing or not loaded correctly.');
 }
         file_put_contents(__DIR__.'/../../logs/debug.log', "Handler Invoked." . PHP_EOL, FILE_APPEND);
@@ -39,17 +39,17 @@ if (!isset($config)) {
             try {
                 // SMTP ayarları
                 $mail->isSMTP();
-                $mail->Host = $config['smtp']['host'];
+                $mail->Host = $smtp['smtp']['host'];
                 $mail->SMTPAuth = true;
-                $mail->Username = $config['smtp']['user'];
-                $mail->Password = $config['smtp']['pass'];
-                $mail->SMTPSecure = $config['smtp']['encryption'];
-                $mail->Port = $config['smtp']['port'];
+                $mail->Username = $smtp['smtp']['user'];
+                $mail->Password = $smtp['smtp']['pass'];
+                $mail->SMTPSecure = $smtp['smtp']['encryption'];
+                $mail->Port = $smtp['smtp']['port'];
 
                 // E-posta ayarları
-                $mail->setFrom($config['smtp']['user'], 'Coff PHP Framework');
+                $mail->setFrom($smtp['smtp']['user'], 'Coff PHP Framework');
                 $mail->addAddress($email, $name); // Gönderilecek kişi
-                $mail->addReplyTo($config['smtp']['user'], 'Information');
+                $mail->addReplyTo($smtp['smtp']['user'], 'Information');
 
                 // İçerik
                 $mail->isHTML(true);
