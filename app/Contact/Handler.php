@@ -9,6 +9,9 @@
 // Version: ubden/coff-framework/version.txt
 // Release Date: 2024
 
+// Requiring configuration file
+$config = require_once __DIR__ . '/../../config/config.php';
+
 namespace App\Contact;
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -22,7 +25,6 @@ class Handler
         ini_set('display_startup_errors', 1);
         error_reporting(E_ALL);
 
-        $config = require __DIR__ . '/../../config/config.php';
         $message = 'Welcome to Coff Framework Contact Page!';
         file_put_contents(__DIR__.'/../../logs/debug.log', "Handler Invoked." . PHP_EOL, FILE_APPEND);
 
