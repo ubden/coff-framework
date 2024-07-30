@@ -12,29 +12,12 @@
 // Include the header file
 require __DIR__ . '/../includes/header.php'; 
 
-// Handler nesnesi yaratılır ve handle metodu çağrılır
-require_once __DIR__ . '/path/to/Handler.php'; // Handler dosyanızın yolu doğru olmalı
-$handler = new \App\Contact\Handler();
-$handler->handle();
-
-// Mesajlar ve mesaj tipleri Handler sınıfından alınır
-$message = $handler->getMessage();
-$messageType = $handler->getMessageType();
 ?>
 
 <div class="container mt-5">
     <h1><?php echo $head; ?></h1>
     <p>If you have any questions, feel free to contact us by filling out the form below.</p>
     
-    <?php if (!empty($message)): ?>
-    <div class="alert alert-<?= htmlspecialchars($messageType); ?> alert-dismissible fade show" role="alert">
-        <?= htmlspecialchars($message); ?>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <?php endif; ?>
-
     <form action="/?path=Contact" method="post" class="mt-4">
         <div class="form-group">
             <label for="name">Name:</label>
@@ -57,4 +40,3 @@ $messageType = $handler->getMessageType();
 </div>
 
 <?php require __DIR__ . '/../includes/footer.php'; ?>
-
