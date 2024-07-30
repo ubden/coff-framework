@@ -11,7 +11,8 @@ $router = new Router();
 $router->mount('/api', function() use ($router) {
     $router->get('/users', [UserController::class, 'getAllUsers']);
 });
-
+?>
+<?php
 // Hata yakalama ve loglama
 $router->set404(function() {
     http_response_code(404);
@@ -31,3 +32,4 @@ try {
     http_response_code(500);
     echo '500, internal server error!';
 }
+?>
