@@ -14,7 +14,7 @@ namespace App\Contact;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-$config = require __DIR__ . '/../../config/config.php';
+$mailconfig = require __DIR__ . '/../../config/config.php';
 
 class Handler
 {
@@ -37,17 +37,17 @@ class Handler
             try {
                 // SMTP ayarları
                 $mail->isSMTP();
-                $mail->Host = $config['smtp']['host'];
+                $mail->Host = $mailconfig['smtp']['host'];
                 $mail->SMTPAuth = true;
-                $mail->Username = $config['smtp']['user'];
-                $mail->Password = $config['smtp']['pass'];
-                $mail->SMTPSecure = $config['smtp']['encryption'];
-                $mail->Port = $config['smtp']['port'];
+                $mail->Username = $mailconfig['smtp']['user'];
+                $mail->Password = $mailconfig['smtp']['pass'];
+                $mail->SMTPSecure = $mailconfig['smtp']['encryption'];
+                $mail->Port = $mailconfig['smtp']['port'];
 
                 // E-posta ayarları
-                $mail->setFrom($config['smtp']['user'], 'Coff PHP Framework');
+                $mail->setFrom($mailconfig['smtp']['user'], 'Coff PHP Framework');
                 $mail->addAddress($email, $name); // Gönderilecek kişi
-                $mail->addReplyTo($config['smtp']['user'], 'Information');
+                $mail->addReplyTo($mailconfig['smtp']['user'], 'Information');
 
                 // İçerik
                 $mail->isHTML(true);
