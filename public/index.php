@@ -20,10 +20,10 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 log_message("Index.php accessed");
 
-// $_POST dizisinin varlığını kontrol et ve tanımla
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST)) {
-    $_POST = [];
-}
+// // $_POST dizisinin varlığını kontrol et ve tanımla
+// if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST)) {
+//     $_POST = [];
+// }
 
 $router = new \Bramus\Router\Router();
 
