@@ -14,6 +14,7 @@ namespace App\Contact;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+$config = require __DIR__ . '/../../config/config.php';
 
 class Handler
 {
