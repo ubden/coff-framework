@@ -10,6 +10,9 @@
 // Release Date: 2024
 
 
+// Include the header file
+require __DIR__ . '/../includes/header.php'; 
+
 ?>
 
 <div class="container mt-5">

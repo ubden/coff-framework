@@ -14,9 +14,6 @@ namespace App\Contact;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Include the header file
-require __DIR__ . '/../includes/header.php'; 
-
 
 class Handler
 {
