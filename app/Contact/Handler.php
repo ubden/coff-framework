@@ -14,11 +14,6 @@ namespace App\Contact;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-$config = require __DIR__ . '/../../config/smtp.php';
-if (!isset($config)) {
-    die('Configuration file is missing or not loaded correctly.');
-}
-
 class Handler
 {
     public function handle()
@@ -27,6 +22,10 @@ class Handler
         ini_set('display_startup_errors', 1);
         error_reporting(E_ALL);
         $message = 'Welcome to Coff Framework Contact Page!';
+        $config = require __DIR__ . '/../../config/smtp.php';
+if (!isset($config)) {
+    die('Configuration file is missing or not loaded correctly.');
+}
         file_put_contents(__DIR__.'/../../logs/debug.log', "Handler Invoked." . PHP_EOL, FILE_APPEND);
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
