@@ -22,11 +22,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 log_message("Index.php accessed");
 
-// Geçici çözüm: $_POST değişkenini tanımlama
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST)) {
-    $_POST = [];
-}
-
 // Bramus Router'ı yükle ve API rotalarını dahil et
 require_once __DIR__ . '/../config/routes/api.php';
 
