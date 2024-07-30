@@ -1,5 +1,4 @@
 <?php
-session_start();  // Start the session at the very beginning
 
 // Coff PHP Framework
 // Created by Ubden Community
@@ -17,6 +16,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require_once __DIR__ . '/../../config/logger.php';  // logger.php dosyasını include et
+session_start();  // Start the session at the very beginning
 
 class Handler
 {
