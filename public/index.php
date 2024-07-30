@@ -22,11 +22,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 log_message("Index.php accessed");
 
-// Geçici çözüm: $_POST değişkenini tanımlama
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST)) {
-    $_POST = [];
-}
-
 // Bramus Router'ı yükle
 $router = new \Bramus\Router\Router();
 
@@ -50,7 +45,6 @@ if (class_exists($handlerClass)) {
 } else {
     if (strpos($_SERVER['REQUEST_URI'], '/api/') === 0) {
         log_message("API request detected.");
-        // API rotalarını dahil et
         $router->run();
     } else {
         log_message("404 Not Found: " . $handlerClass);

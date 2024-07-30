@@ -8,5 +8,4 @@ $router = new Router();
 $router->mount('/api', function() use ($router) {
     $router->get('/users', [UserController::class, 'getAllUsers']);
 });
-
-$router->run();
+?>
