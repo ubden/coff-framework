@@ -28,6 +28,7 @@ require __DIR__ . '/../includes/header.php';
             <li class="list-group-item">Built-in support for popular libraries</li>
             <li class="list-group-item">Easy configuration management</li>
             <li class="list-group-item">Version control with automatic updates</li>
+            <li class="list-group-item">Advanced logger system</li>
         </ul>
     </div>
 </div>
