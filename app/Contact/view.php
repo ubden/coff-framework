@@ -16,7 +16,7 @@ require __DIR__ . '/../includes/header.php';
 ?>
 
 <div class="container mt-5">
-    <h1><?php echo $message; ?></h1>
+    <h1><?php echo $titlemessage; ?></h1>
     <p>If you have any questions, feel free to contact us by filling out the form below.</p>
     
     <?php if (!empty($handler->getMessage())): ?>

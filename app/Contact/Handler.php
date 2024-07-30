@@ -24,6 +24,7 @@ class Handler
     private $config;
     private $message; // Mesaj metni ve tipini saklamak için
     private $messageType; // 'success', 'error', veya 'warning'
+    $titlemessage = 'Welcome to Coff Framework Contact Page!';
 
     public function __construct()
     {
@@ -83,8 +84,6 @@ class Handler
         }
     }
 
-    // Smtp ayarlarını yapılandıran metod
-
     private function configureMailer(PHPMailer $mail)
     {
         $mail->isSMTP();
@@ -97,7 +96,6 @@ class Handler
     }
 
     // Mesajları ve mesaj türünü döndüren getter metodları
-    
     public function getMessage()
     {
         return $this->message;
