@@ -2,12 +2,13 @@
   "name": "coff/framework",
   "description": "A simple and understandable PHP framework.",
   "require": {
-        "phpmailer/phpmailer": "^6.5",
-        "guzzlehttp/guzzle": "^7.3",
-        "vlucas/valitron": "^1.4"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^9.5"
+    "phpmailer/phpmailer": "^6.5",
+    "guzzlehttp/guzzle": "^7.3",
+    "vlucas/valitron": "^1.4",
+    "bramus/router": "^1.6" 
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5"
   },
   "autoload": {
     "psr-4": {
