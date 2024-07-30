@@ -52,6 +52,7 @@ if (class_exists($handlerClass)) {
         log_message("API request detected.");
         try {
             $router->run();
+            log_message("API request successful.", "info");
         } catch (Exception $e) {
             // Hata mesajını ve stack trace bilgisini loglayın
             log_message("API error: " . $e->getMessage(), "error");
