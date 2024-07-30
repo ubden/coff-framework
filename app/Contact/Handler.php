@@ -9,14 +9,13 @@
 // Version: ubden/coff-framework/version.txt
 // Release Date: 2024
 
-
+// Include the header file
+require __DIR__ . '/../includes/header.php'; 
 
 namespace App\Contact;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-// Include the header file
-require __DIR__ . '/../includes/header.php'; 
 
 class Handler
 {

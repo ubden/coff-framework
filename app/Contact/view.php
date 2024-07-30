@@ -9,8 +9,7 @@
 // Version: ubden/coff-framework/version.txt
 // Release Date: 2024
 
-// Include the header file
-require __DIR__ . '/../includes/header.php'; 
+
 
 ?>
 
