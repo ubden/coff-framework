@@ -3,6 +3,7 @@
 use Bramus\Router\Router;
 use App\Api\UserController;
 
+// Logger'ı dahil et
 require_once __DIR__ . '/../logger.php';
 
 $router = new Router();
