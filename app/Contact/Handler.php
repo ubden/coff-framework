@@ -12,6 +12,7 @@
 
 namespace App\Contact;
 
+use App\Includes\FileCache;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 

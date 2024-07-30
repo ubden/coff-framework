@@ -13,6 +13,8 @@
 
 namespace App\Home;
 
+use App\Includes\FileCache;
+
 class Handler
 {
     public function handle()
