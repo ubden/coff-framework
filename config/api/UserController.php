@@ -16,11 +16,17 @@ class UserController {
     }
 
     public function getAllUsers() {
-        $stmt = $this->db->prepare("SELECT id, name FROM users");
-        $stmt->execute();
-        $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        try {
+            $stmt = $this->db->prepare("SELECT id, name FROM users");
+            $stmt->execute();
+            $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        header('Content-Type: application/json');
-        echo json_encode($users);
+            header('Content-Type: application/json');
+            echo json_encode($users);
+        } catch (Exception $e) {
+            log_message("Database error: " . $e->getMessage(), "error");
+            http_response_code(500);
+            echo '500, internal server error!';
+        }
     }
 }

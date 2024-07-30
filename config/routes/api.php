@@ -3,13 +3,15 @@
 use Bramus\Router\Router;
 use App\Api\UserController;
 
-// Logger'ı dahil et
 require_once __DIR__ . '/../logger.php';
 
 $router = new Router();
 
 $router->mount('/api', function() use ($router) {
-    $router->get('/users', 'App\Api\UserController@getAllUsers');
+    $router->get('/users', function() {
+        $controller = new UserController();
+        $controller->getAllUsers();
+    });
 });
 
 // Hata yakalama ve loglama
@@ -20,7 +22,6 @@ $router->set404(function() {
 });
 
 $router->before('GET|POST|PUT|DELETE', '/.*', function() {
-    // Log request details
     log_message("API request: " . $_SERVER['REQUEST_METHOD'] . " " . $_SERVER['REQUEST_URI'], "info");
 });
 
