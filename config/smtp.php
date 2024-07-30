@@ -1,5 +1,5 @@
 <?php
-// Coff Framework
+// Coff PHP Framework
 // Created by Ubden Community
 // GitHub: https://github.com/ubden/coff-framework
 // Contributors: https://github.com/ck-cankurt
@@ -9,7 +9,7 @@
 // Version: ubden/coff-framework/version.txt
 // Release Date: 2024
 
-
+return [
     // SMTP Settings
     'smtp' => [
         'host' => 'smtp.example.com',
@@ -17,6 +17,7 @@
         'pass' => 'password',
         'port' => 587,
         'encryption' => 'tls',
-    ],
-?>
+    ]
+];
 // End of file
+?>
