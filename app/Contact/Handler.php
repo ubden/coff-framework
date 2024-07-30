@@ -23,10 +23,14 @@ class Handler
         error_reporting(E_ALL);
         $head = 'Welcome to Coff Framework Contact Page!';
         $smtp = require __DIR__ . '/../../config/smtp.php';
-if (!isset($smtp)) {
-    die('Configuration file is missing or not loaded correctly.');
-}
-        file_put_contents(__DIR__.'/../../logs/debug.log', "Handler Invoked." . PHP_EOL, FILE_APPEND);
+
+        if (!isset($smtp)) {
+            $this->log("Configuration file is missing or not loaded correctly.", "error");
+            die('Configuration file is missing or not loaded correctly.');
+        }
+
+        // Log Handler Invoked
+        $this->log("Handler Invoked.", "info");
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $name = $_POST['name'];
@@ -34,39 +38,44 @@ if (!isset($smtp)) {
             $subject = $_POST['subject'];
             $message = $_POST['message'];
 
-            // PHPMailer kullanarak e-posta gönderme
             $mail = new PHPMailer(true);
             try {
-                // SMTP ayarları
-                $mail->isSMTP();
-                $mail->Host = $smtp['smtp']['host'];
-                $mail->SMTPAuth = true;
-                $mail->Username = $smtp['smtp']['user'];
-                $mail->Password = $smtp['smtp']['pass'];
-                $mail->SMTPSecure = $smtp['smtp']['encryption'];
-                $mail->Port = $smtp['smtp']['port'];
-
-                // E-posta ayarları
+                $this->configureMailer($mail, $smtp);
                 $mail->setFrom($smtp['smtp']['user'], 'Coff PHP Framework');
-                $mail->addAddress($email, $name); // Gönderilecek kişi
+                $mail->addAddress($email, $name);
                 $mail->addReplyTo($smtp['smtp']['user'], 'Information');
 
-                // İçerik
                 $mail->isHTML(true);
                 $mail->Subject = $subject;
-                $mail->Body    = nl2br("Name: $name\nEmail: $email\n\n$message");
-                $mail->AltBody = "Name: $name\nEmail: $email\n\n$message";
+                $mail->Body = nl2br("Name: $name\nEmail: $email\n\n$message");
 
                 $mail->send();
-                $message = 'Message has been sent successfully';
-                file_put_contents(__DIR__.'/../../logs/debug.log', "Email sent successfully." . PHP_EOL, FILE_APPEND);
+                $this->log("Email sent successfully to {$email}.", "info");
             } catch (Exception $e) {
-                $message = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-                file_put_contents(__DIR__.'/../../logs/debug.log', "Mailer Error: {$mail->ErrorInfo}." . PHP_EOL, FILE_APPEND);
+                $this->log("Mailer Error: {$mail->ErrorInfo}", "error");
             }
         }
 
         require __DIR__ . '/view.php';
+    }
+
+    // Configure PHPMailer
+    private function configureMailer(PHPMailer $mail, $smtp)
+    {
+        $mail->isSMTP();
+        $mail->Host = $smtp['smtp']['host'];
+        $mail->SMTPAuth = true;
+        $mail->Username = $smtp['smtp']['user'];
+        $mail->Password = $smtp['smtp']['pass'];
+        $mail->SMTPSecure = $smtp['smtp']['encryption'];
+        $mail->Port = $smtp['smtp']['port'];
+    }
+
+    private function log($message, $type = "info")
+    {
+        $timestamp = date('Y-m-d H:i:s');
+        $logMessage = "[{$timestamp}] [{$type}] - {$message}\n";
+        file_put_contents(__DIR__ . '/../../logs/debug.log', $logMessage, FILE_APPEND);
     }
 }
 ?>
