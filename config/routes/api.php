@@ -23,8 +23,6 @@ $router->before('GET|POST|PUT|DELETE', '/.*', function() {
     log_message("API request: " . $_SERVER['REQUEST_METHOD'] . " " . $_SERVER['REQUEST_URI'], "info");
 });
 
-$router->run();
-
 log_message("API request successful.", "info");
 
 ?>
