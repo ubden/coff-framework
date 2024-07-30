@@ -22,6 +22,14 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 log_message("Index.php accessed");
 
+// Bramus Router'ı yükle
+$router = new \Bramus\Router\Router();
+
+// API routes
+require_once __DIR__ . '/../config/routes/api.php';
+
+$router->run();
+
 $path = !empty($_POST['path']) ? ucfirst($_POST['path']) : 
         (!empty($_GET['path']) ? ucfirst($_GET['path']) : 'Home');
 log_message("Resolved path: " . $path);
