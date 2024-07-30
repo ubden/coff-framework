@@ -80,7 +80,3 @@ class Handler
     }
 }
 
-// Instantiate and handle the contact form submission
-$handler = new Handler();
-$handler->handle();
-?>
