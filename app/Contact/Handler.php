@@ -14,10 +14,10 @@ namespace App\Contact;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-$mailconfig = require __DIR__ . '/../../config/config.php';
 
 class Handler
 {
+    $mailconfig = require __DIR__ . '/../../config/config.php';
     public function handle()
     {
         ini_set('display_errors', 1);
