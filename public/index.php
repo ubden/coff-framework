@@ -18,6 +18,7 @@ function log_message($message) {
     file_put_contents(__DIR__.'/../logs/debug.log', $message . PHP_EOL, FILE_APPEND);
 }
 
+// Composer autoload dosyasını yüklemek için aşağıdaki satırı ekleyin:
 require_once __DIR__ . '/../vendor/autoload.php';
 
 log_message("Index.php accessed");
