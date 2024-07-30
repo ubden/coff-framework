@@ -25,8 +25,11 @@ log_message("Index.php accessed");
 // Bramus Router'ı yükle ve API rotalarını dahil et
 require_once __DIR__ . '/../config/routes/api.php';
 
-$path = isset($_POST['path']) ? ucfirst($_POST['path']) : 
-        (isset($_GET['path']) ? ucfirst($_GET['path']) : 'Home');
+// $_POST ve $_GET değişkenlerinin varlığını kontrol edin
+$post_path = isset($_POST['path']) ? ucfirst($_POST['path']) : null;
+$get_path = isset($_GET['path']) ? ucfirst($_GET['path']) : null;
+$path = $post_path ?: ($get_path ?: 'Home');
+
 log_message("Resolved path: " . $path);
 
 $handlerClass = 'App\\' . $path . '\\Handler';
