@@ -15,7 +15,7 @@ require __DIR__ . '/../includes/header.php';
 ?>
 
 <div class="container mt-5">
-    <h1><?php echo $message; ?></h1>
+    <h1><?php echo $head; ?></h1>
     <p>If you have any questions, feel free to contact us by filling out the form below.</p>
     
     <form action="/?path=Contact" method="post" class="mt-4">

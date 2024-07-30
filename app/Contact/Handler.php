@@ -21,7 +21,7 @@ class Handler
         ini_set('display_errors', 1);
         ini_set('display_startup_errors', 1);
         error_reporting(E_ALL);
-        $message = 'Welcome to Coff Framework Contact Page!';
+        $head = 'Welcome to Coff Framework Contact Page!';
         $config = require __DIR__ . '/../../config/smtp.php';
 if (!isset($config)) {
     die('Configuration file is missing or not loaded correctly.');

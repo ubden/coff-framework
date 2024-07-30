@@ -15,7 +15,7 @@ require __DIR__ . '/../includes/header.php';
 ?>
 
 
-<h1><?php echo $message; ?></h1>
+<h1><?php echo $head; ?></h1>
 <div class="card">
     <div class="card-header">
         Dashboard
