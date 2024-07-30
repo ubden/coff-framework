@@ -9,10 +9,13 @@
 // Version: ubden/coff-framework/version.txt
 // Release Date: 2024
 
+<?php
 namespace App\Contact;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+
+require_once __DIR__ . '/../../config/logger.php';  // logger.php dosyasını include et
 
 class Handler
 {
@@ -25,12 +28,11 @@ class Handler
         $smtp = require __DIR__ . '/../../config/smtp.php';
 
         if (!isset($smtp)) {
-            $this->log("Configuration file is missing or not loaded correctly.", "error");
+            log_message("Configuration file is missing or not loaded correctly.", "error");
             die('Configuration file is missing or not loaded correctly.');
         }
 
-        // Log Handler Invoked
-        $this->log("Handler Invoked.", "info");
+        log_message("Handler Invoked.", "info");
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $name = $_POST['name'];
@@ -50,9 +52,9 @@ class Handler
                 $mail->Body = nl2br("Name: $name\nEmail: $email\n\n$message");
 
                 $mail->send();
-                $this->log("Email sent successfully to {$email}.", "info");
+                log_message("Email sent successfully to {$email}.", "info");
             } catch (Exception $e) {
-                $this->log("Mailer Error: {$mail->ErrorInfo}", "error");
+                log_message("Mailer Error: {$mail->ErrorInfo}", "error");
             }
         }
 
@@ -69,13 +71,6 @@ class Handler
         $mail->Password = $smtp['smtp']['pass'];
         $mail->SMTPSecure = $smtp['smtp']['encryption'];
         $mail->Port = $smtp['smtp']['port'];
-    }
-
-    private function log($message, $type = "info")
-    {
-        $timestamp = date('Y-m-d H:i:s');
-        $logMessage = "[{$timestamp}] [{$type}] - {$message}\n";
-        file_put_contents(__DIR__ . '/../../logs/debug.log', $logMessage, FILE_APPEND);
     }
 }
 ?>

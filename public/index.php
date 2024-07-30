@@ -14,11 +14,10 @@ error_reporting(E_ALL);
 // Version: ubden/coff-framework/version.txt
 // Release Date: 2024
 
-function log_message($message) {
-    file_put_contents(__DIR__.'/../logs/debug.log', $message . PHP_EOL, FILE_APPEND);
-}
+// Loglama işlemleri için gerekli dosyaları yükler
+require_once __DIR__ . '/../../config/logger.php'; // Logger.php'yi yükler
 
-// Composer autoload dosyasını yüklemek için aşağıdaki satırı ekleyin:
+// Composer autoload dosyasını yükler
 require_once __DIR__ . '/../vendor/autoload.php';
 
 log_message("Index.php accessed");
