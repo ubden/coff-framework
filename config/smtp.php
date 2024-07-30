@@ -1,5 +1,5 @@
 <?php
-// Coff PHP Framework
+// Coff Framework
 // Created by Ubden Community
 // GitHub: https://github.com/ubden/coff-framework
 // Contributors: https://github.com/ck-cankurt
@@ -9,14 +9,14 @@
 // Version: ubden/coff-framework/version.txt
 // Release Date: 2024
 
+
+    // SMTP Settings
+    'smtp' => [
+        'host' => 'smtp.example.com',
+        'user' => 'user@example.com',
+        'pass' => 'password',
+        'port' => 587,
+        'encryption' => 'tls',
+    ],
 ?>
-
-
-</main>
-    <footer class="footer mt-auto py-3 bg-light">
-        <div class="container">
-            <span class="text-muted">&copy; 2024 <?php echo $config['app']['app_name']; ?> - Version <?php echo getVersion(); ?></span>
-        </div>
-    </footer>
-</body>
-</html>
+// End of file

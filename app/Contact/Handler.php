@@ -30,7 +30,7 @@ class Handler
 
     private function loadConfig()
     {
-        $configPath = __DIR__ . '/../../config/config.php';
+        $configPath = __DIR__ . '/../../config/smtp.php';
         if (file_exists($configPath)) {
             $this->config = require $configPath;
         } else {

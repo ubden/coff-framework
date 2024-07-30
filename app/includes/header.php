@@ -10,14 +10,14 @@
 // Release Date: 2024
 
 // Requiring configuration file
-$headerConfig = require_once __DIR__ . '/../../config/config.php';
+$config = require_once __DIR__ . '/../../config/config.php';
 
 ?>
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo $headerConfig['app']['app_name']; ?> - Version <?php echo getVersion(); ?></title>
+    <title><?php echo $config['app']['app_name']; ?> - Version <?php echo getVersion(); ?></title>
     <meta name="description" content="Coff PHP Framework is a simple and lightweight PHP framework.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="/assets/images/coff_dev_ico.png" type="image/x-icon">
@@ -27,7 +27,7 @@ $headerConfig = require_once __DIR__ . '/../../config/config.php';
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="./index.php"><?php echo $headerConfig['app']['app_name']; ?> - Version <?php echo getVersion(); ?></a>
+        <a class="navbar-brand" href="./index.php"><?php echo $config['app']['app_name']; ?> - Version <?php echo getVersion(); ?></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
