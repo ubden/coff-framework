@@ -11,8 +11,7 @@ $router = new Router();
 $router->mount('/api', function() use ($router) {
     $router->get('/users', [UserController::class, 'getAllUsers']);
 });
-?>
-<?php
+
 // Hata yakalama ve loglama
 $router->set404(function() {
     http_response_code(404);
