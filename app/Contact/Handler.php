@@ -17,12 +17,12 @@ use PHPMailer\PHPMailer\Exception;
 
 class Handler
 {
-    $mailconfig = require __DIR__ . '/../../config/config.php';
     public function handle()
     {
         ini_set('display_errors', 1);
         ini_set('display_startup_errors', 1);
         error_reporting(E_ALL);
+        $mailconfig = require __DIR__ . '/../../config/config.php';
         $message = 'Welcome to Coff Framework Contact Page!';
         file_put_contents(__DIR__.'/../../logs/debug.log', "Handler Invoked." . PHP_EOL, FILE_APPEND);
 
