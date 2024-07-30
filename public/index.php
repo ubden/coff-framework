@@ -45,7 +45,13 @@ if (class_exists($handlerClass)) {
 } else {
     if (strpos($_SERVER['REQUEST_URI'], '/api/') === 0) {
         log_message("API request detected.");
-        $router->run();
+        try {
+            $router->run();
+        } catch (Exception $e) {
+            log_message("API error: " . $e->getMessage(), "error");
+            http_response_code(500);
+            echo '500, internal server error!';
+        }
     } else {
         log_message("404 Not Found: " . $handlerClass);
         echo '404 Not Found';
