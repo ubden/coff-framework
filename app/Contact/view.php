@@ -13,7 +13,7 @@
 require __DIR__ . '/../includes/header.php'; 
 
 // Handler nesnesi yaratılır ve handle metodu çağrılır
-require_once __DIR__ . '/path/to/Handler.php'; // Handler dosyanızın yolu doğru olmalı
+require_once __DIR__ . '/Handler.php'; // Handler dosyanızın yolu doğru olmalı
 $handler = new \App\Contact\Handler();
 $handler->handle();
 
