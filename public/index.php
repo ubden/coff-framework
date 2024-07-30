@@ -53,7 +53,9 @@ if (class_exists($handlerClass)) {
         try {
             $router->run();
         } catch (Exception $e) {
+            // Hata mesajını ve stack trace bilgisini loglayın
             log_message("API error: " . $e->getMessage(), "error");
+            log_message("Stack trace: " . $e->getTraceAsString(), "error");
             http_response_code(500);
             echo '500, internal server error!';
         }
@@ -62,4 +64,5 @@ if (class_exists($handlerClass)) {
         echo '404 Not Found';
     }
 }
+?>
 ?>
