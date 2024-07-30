@@ -22,13 +22,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 log_message("Index.php accessed");
 
-// Bramus Router'ı yükle
-$router = new \Bramus\Router\Router();
-
-// API routes
+// Bramus Router'ı yükle ve API rotalarını dahil et
 require_once __DIR__ . '/../config/routes/api.php';
-
-$router->run();
 
 $path = !empty($_POST['path']) ? ucfirst($_POST['path']) : 
         (!empty($_GET['path']) ? ucfirst($_GET['path']) : 'Home');
@@ -42,7 +37,12 @@ if (class_exists($handlerClass)) {
     $handler = new $handlerClass();
     $handler->handle();
 } else {
-    log_message("404 Not Found: " . $handlerClass);
-    echo '404 Not Found';
+    if (strpos($_SERVER['REQUEST_URI'], '/api/') === 0) {
+        log_message("API request detected.");
+        require_once __DIR__ . '/../config/routes/api.php';
+    } else {
+        log_message("404 Not Found: " . $handlerClass);
+        echo '404 Not Found';
+    }
 }
 ?>
