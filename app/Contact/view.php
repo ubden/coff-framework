@@ -19,6 +19,16 @@ require __DIR__ . '/../includes/header.php';
     <h1><?php echo $message; ?></h1>
     <p>If you have any questions, feel free to contact us by filling out the form below.</p>
     
+    <?php if (!empty($handler->getMessage())): ?>
+<div class="alert alert-<?= $handler->getMessageType(); ?> alert-dismissible fade show" role="alert">
+    <?= $handler->getMessage(); ?>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<?php endif; ?>
+
+
     <form action="/?path=Contact" method="post" class="mt-4">
         <div class="form-group">
             <label for="name">Name:</label>
