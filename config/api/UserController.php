@@ -9,6 +9,7 @@ class UserController {
     private $db;
 
     public function __construct() {
+        log_message("UserController __construct called", "info");
         $config = require __DIR__ . '/../config.php';
         $dbConfig = $config['db'];
 
@@ -17,6 +18,7 @@ class UserController {
     }
 
     public function getAllUsers() {
+        log_message("UserController getAllUsers called", "info");
         try {
             $stmt = $this->db->prepare("SELECT id, name FROM users");
             $stmt->execute();

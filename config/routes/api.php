@@ -9,6 +9,7 @@ $router = new Router();
 
 $router->mount('/api', function() use ($router) {
     $router->get('/users', function() {
+        log_message("UserController getAllUsers called", "info");
         $controller = new UserController();
         $controller->getAllUsers();
     });
