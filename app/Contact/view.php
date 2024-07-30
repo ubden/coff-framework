@@ -1,6 +1,7 @@
 <?php
-session_start();  // Start the session
-
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 // Include the header file
 require __DIR__ . '/../includes/header.php'; 
 
