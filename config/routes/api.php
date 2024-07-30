@@ -13,11 +13,11 @@ $router->mount('/api', function() use ($router) {
 });
 
 // // Hata yakalama ve loglama
-// $router->set404(function() {
-//     http_response_code(404);
-//     echo '404, route not found!';
-//     log_message("404, route not found!", "error");
-// });
+$router->set404(function() {
+    http_response_code(404);
+    echo '404, route not found!';
+    log_message("404, route not found!", "error");
+});
 
 // $router->before('GET|POST|PUT|DELETE', '/.*', function() {
 //     // Log request details
