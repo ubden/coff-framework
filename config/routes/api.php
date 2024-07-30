@@ -27,7 +27,6 @@ $router->before('GET|POST|PUT|DELETE', '/.*', function() {
 });
 
 try {
-    $router->run();
     log_message("API request successful.", "info");
 } catch (Exception $e) {
     log_message("API error: " . $e->getMessage(), "error");
