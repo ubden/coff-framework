@@ -2,8 +2,6 @@
 // Loglama işlemleri için gerekli dosyaları yükler
 require_once __DIR__ . '/../config/logger.php'; // Logger.php'yi yükler
 
-<?php
-
 use Bramus\Router\Router;
 use App\Api\UserController;
 
@@ -33,3 +31,5 @@ try {
     http_response_code(500);
     echo '500, internal server error!';
 }
+
+?>
