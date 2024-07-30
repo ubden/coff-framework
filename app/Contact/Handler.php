@@ -19,7 +19,7 @@ class Handler
     private $config;
     private $message = ''; // Mesaj metni ve tipini saklamak için, başlangıç değeri olarak boş string
     private $messageType = ''; // 'success', 'error', veya 'warning' tipini saklamak için, başlangıç değeri olarak boş string
-    private $titlemessage = 'Welcome to Coff Framework Contact Page!'; // Başlık mesajını saklamak için
+    private $titleMessage = 'Welcome to Coff Framework Contact Page!';  // Başlık mesajını burada saklayın
 
     public function __construct()
     {
@@ -27,7 +27,7 @@ class Handler
     }
 
     // SMTP ayarlarını yüklemek için özel bir fonksiyon
-    
+
     private function loadConfig()
     {
         $configPath = __DIR__ . '/../../config/smtp.php';
