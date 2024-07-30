@@ -24,10 +24,9 @@ class Handler
         ini_set('display_errors', 1);
         ini_set('display_startup_errors', 1);
         error_reporting(E_ALL);
-
-        // Requiring configuration file
-    $config = require_once __DIR__ . '/../../config/config.php';
         $message = 'Welcome to Coff Framework Contact Page!';
+        // Requiring configuration file
+        $config = require_once __DIR__ . '/../../config/config.php';
         file_put_contents(__DIR__.'/../../logs/debug.log', "Handler Invoked." . PHP_EOL, FILE_APPEND);
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
