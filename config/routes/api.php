@@ -24,15 +24,15 @@ $router->before('GET|POST|PUT|DELETE', '/.*', function() {
     log_message("API request: " . $_SERVER['REQUEST_METHOD'] . " " . $_SERVER['REQUEST_URI'], "info");
 });
 
-try {
-    $router->run();
-} catch (Exception $e) {
-    // Hata mesajını ve stack trace bilgisini loglayın
-    log_message("API error: " . $e->getMessage(), "error");
-    log_message("Stack trace: " . $e->getTraceAsString(), "error");
-    http_response_code(500);
-    echo '500, internal server error!';
-}
+// try {
+//     $router->run();
+// } catch (Exception $e) {
+//     // Hata mesajını ve stack trace bilgisini loglayın
+//     log_message("API error: " . $e->getMessage(), "error");
+//     log_message("Stack trace: " . $e->getTraceAsString(), "error");
+//     http_response_code(500);
+//     echo '500, internal server error!';
+// }
 
 
 ?>
