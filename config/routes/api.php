@@ -19,10 +19,10 @@ $router->set404(function() {
     log_message("404, route not found!", "error");
 });
 
-// $router->before('GET|POST|PUT|DELETE', '/.*', function() {
-//     // Log request details
-//     log_message("API request: " . $_SERVER['REQUEST_METHOD'] . " " . $_SERVER['REQUEST_URI'], "info");
-// });
+$router->before('GET|POST|PUT|DELETE', '/.*', function() {
+    // Log request details
+    log_message("API request: " . $_SERVER['REQUEST_METHOD'] . " " . $_SERVER['REQUEST_URI'], "info");
+});
 
 // try {
 //     $router->run();
