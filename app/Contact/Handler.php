@@ -14,25 +14,20 @@ namespace App\Contact;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Error reporting for debugging (remove or modify in production)
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 class Handler
 {
     private $config;
-    private $message; // Mesaj metni ve tipini saklamak için
-    private $messageType; // 'success', 'error', veya 'warning'
-    $titlemessage = 'Welcome to Coff Framework Contact Page!';
+    private $message = ''; // Mesaj metni ve tipini saklamak için, başlangıç değeri olarak boş string
+    private $messageType = ''; // 'success', 'error', veya 'warning' tipini saklamak için, başlangıç değeri olarak boş string
+    private $titlemessage = 'Welcome to Coff Framework Contact Page!'; // Başlık mesajını saklamak için
 
     public function __construct()
     {
         $this->loadConfig();
-        $this->message = '';
-        $this->messageType = '';
     }
 
+    // SMTP ayarlarını yüklemek için özel bir fonksiyon
+    
     private function loadConfig()
     {
         $configPath = __DIR__ . '/../../config/smtp.php';
@@ -55,12 +50,16 @@ class Handler
         require __DIR__ . '/view.php';
     }
 
+    // Form gönderildiğinde, form alanlarını işlemek için özel bir fonksiyon
+
     private function processFormSubmission()
     {
         $name = $_POST['name'] ?? '';
         $email = $_POST['email'] ?? '';
         $subject = $_POST['subject'] ?? '';
         $message = $_POST['message'] ?? '';
+
+        // Form alanlarının boş olup olmadığını kontrol etmek için
 
         $mail = new PHPMailer(true);
         try {
@@ -84,6 +83,8 @@ class Handler
         }
     }
 
+    // SMTP ayarlarını yapılandırmak için özel bir fonksiyon
+
     private function configureMailer(PHPMailer $mail)
     {
         $mail->isSMTP();
@@ -95,7 +96,6 @@ class Handler
         $mail->Port = $this->config['smtp']['port'];
     }
 
-    // Mesajları ve mesaj türünü döndüren getter metodları
     public function getMessage()
     {
         return $this->message;
