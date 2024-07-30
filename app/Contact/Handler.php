@@ -14,11 +14,9 @@ namespace App\Contact;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-$config = require __DIR__ . '/../../config/config.php';
-if (!isset($config)) {
-    die('Configuration file is missing or not loaded correctly.');
-}
-echo __DIR__ . '/../../config/config.php'; // Bu yolu kullanarak dosyanın var olup olmadığını kontrol edin
+// Include the header file
+require __DIR__ . '/../includes/header.php'; 
+
 
 class Handler
 {
