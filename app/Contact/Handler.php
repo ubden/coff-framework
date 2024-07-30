@@ -18,7 +18,6 @@ $config = require __DIR__ . '/../../config/smtp.php';
 if (!isset($config)) {
     die('Configuration file is missing or not loaded correctly.');
 }
-echo __DIR__ . '/../../config/config.php'; // Bu yolu kullanarak dosyanın var olup olmadığını kontrol edin
 
 class Handler
 {
