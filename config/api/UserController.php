@@ -3,6 +3,7 @@
 namespace App\Api;
 
 use PDO;
+use Exception;
 
 class UserController {
     private $db;
