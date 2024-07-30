@@ -15,7 +15,7 @@ error_reporting(E_ALL);
 // Release Date: 2024
 
 // Loglama işlemleri için gerekli dosyaları yükler
-require_once __DIR__ . '/../../config/logger.php'; // Logger.php'yi yükler
+require_once __DIR__ . '/../config/logger.php'; // Logger.php'yi yükler
 
 // Composer autoload dosyasını yükler
 require_once __DIR__ . '/../vendor/autoload.php';
