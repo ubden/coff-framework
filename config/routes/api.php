@@ -8,7 +8,7 @@ require_once __DIR__ . '/../logger.php';
 $router = new Router();
 
 $router->mount('/api', function() use ($router) {
-    $router->get('/users', [UserController::class, 'getAllUsers']);
+    $router->get('/users', 'App\Api\UserController@getAllUsers');
 });
 
 // Hata yakalama ve loglama
