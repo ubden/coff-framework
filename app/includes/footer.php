@@ -15,7 +15,7 @@
 </main>
     <footer class="footer mt-auto py-3 bg-light">
         <div class="container">
-            <span class="text-muted">&copy; 2024 <?php echo $config['app']['app_name']; ?> - Version <?php echo getVersion(); ?></span>
+            <span class="text-muted">&copy; 2024 <?php echo $headerConfig['app']['app_name']; ?> - Version <?php echo getVersion(); ?></span>
         </div>
     </footer>
 </body>
