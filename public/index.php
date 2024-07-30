@@ -20,14 +20,19 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 log_message("Index.php accessed");
 
-// $_POST dizisinin varlığını kontrol et ve tanımla
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST)) {
-    $_POST = [];
-}
-
 $router = new \Bramus\Router\Router();
 
 require_once __DIR__ . '/../config/routes/api.php';
+
+try {
+    $router->run();
+    log_message("API request successful.", "info");
+} catch (Exception $e) {
+    log_message("API error: " . $e->getMessage(), "error");
+    log_message("Stack trace: " . $e->getTraceAsString(), "error");
+    http_response_code(500);
+    echo '500, internal server error!';
+}
 
 $post_path = isset($_POST['path']) ? ucfirst($_POST['path']) : null;
 $get_path = isset($_GET['path']) ? ucfirst($_GET['path']) : null;
@@ -45,15 +50,6 @@ if (class_exists($handlerClass)) {
 } else {
     if (strpos($_SERVER['REQUEST_URI'], '/api/') === 0) {
         log_message("API request detected.");
-        try {
-            $router->run();
-            log_message("API request successful.", "info");
-        } catch (Exception $e) {
-            log_message("API error: " . $e->getMessage(), "error");
-            log_message("Stack trace: " . $e->getTraceAsString(), "error");
-            http_response_code(500);
-            echo '500, internal server error!';
-        }
     } else {
         log_message("404 Not Found: " . $handlerClass);
         echo '404 Not Found';
