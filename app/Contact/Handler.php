@@ -64,8 +64,7 @@ class Handler
         }
 
         // Redirect to prevent form resubmission
-        header('Location: view.php');
-        exit();
+        require __DIR__ . '/view.php';
     }
 
     // Configure PHPMailer
