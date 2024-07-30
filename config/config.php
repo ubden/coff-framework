@@ -8,9 +8,6 @@
 // Sponsored Website: https://ubden.com
 // Version: ubden/coff-framework/version.txt
 // Release Date: 2024
-?>
-
-<?php
 
 // Function to read version from version.txt
 function getVersion() {
@@ -62,3 +59,5 @@ return [
         'secret_key' => 'your-secret-key',
     ],
 ];
+?>
+// End of file
