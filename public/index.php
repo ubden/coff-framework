@@ -46,7 +46,6 @@ if (class_exists($handlerClass)) {
     if (strpos($_SERVER['REQUEST_URI'], '/api/') === 0) {
         log_message("API request detected.");
         try {
-            $router->run();
             log_message("API request successful.", "info");
         } catch (Exception $e) {
             log_message("API error: " . $e->getMessage(), "error");
