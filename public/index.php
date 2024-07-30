@@ -14,10 +14,8 @@ error_reporting(E_ALL);
 // Version: ubden/coff-framework/version.txt
 // Release Date: 2024
 
-// Loglama işlemleri için gerekli dosyaları yükler
 require_once __DIR__ . '/../config/logger.php'; // Logger.php'yi yükler
 
-// Composer autoload dosyasını yükler
 require_once __DIR__ . '/../vendor/autoload.php';
 
 log_message("Index.php accessed");
@@ -27,13 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST)) {
     $_POST = [];
 }
 
-// Bramus Router'ı yükle
 $router = new \Bramus\Router\Router();
 
-// API rotalarını dahil et
 require_once __DIR__ . '/../config/routes/api.php';
 
-// $_POST ve $_GET değişkenlerinin varlığını kontrol edin
 $post_path = isset($_POST['path']) ? ucfirst($_POST['path']) : null;
 $get_path = isset($_GET['path']) ? ucfirst($_GET['path']) : null;
 $path = $post_path ?: ($get_path ?: 'Home');
@@ -54,7 +49,6 @@ if (class_exists($handlerClass)) {
             $router->run();
             log_message("API request successful.", "info");
         } catch (Exception $e) {
-            // Hata mesajını ve stack trace bilgisini loglayın
             log_message("API error: " . $e->getMessage(), "error");
             log_message("Stack trace: " . $e->getTraceAsString(), "error");
             http_response_code(500);
