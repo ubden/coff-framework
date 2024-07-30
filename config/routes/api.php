@@ -1,6 +1,6 @@
 <?php
 // Loglama işlemleri için gerekli dosyaları yükler
-require_once __DIR__ . '/../config/logger.php'; // Logger.php'yi yükler
+require_once __DIR__ . '/../../config/logger.php'; // Logger.php'yi yükler
 
 use Bramus\Router\Router;
 use App\Api\UserController;
