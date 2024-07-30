@@ -9,7 +9,6 @@
 // Version: ubden/coff-framework/version.txt
 // Release Date: 2024
 
-<?php
 namespace App\Contact;
 
 use PHPMailer\PHPMailer\PHPMailer;
