@@ -36,32 +36,35 @@ class Handler
 
         log_message("Handler Invoked.", "info");
 
+        // POST verilerinin güvenli bir şekilde kontrol edilmesi
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $name = $_POST['name'];
-            $email = $_POST['email'];
-            $subject = $_POST['subject'];
-            $message = $_POST['message'];
+            $name = isset($_POST['name']) ? $_POST['name'] : null;
+            $email = isset($_POST['email']) ? $_POST['email'] : null;
+            $subject = isset($_POST['subject']) ? $_POST['subject'] : null;
+            $message = isset($_POST['message']) ? $_POST['message'] : null;
 
-            $mail = new PHPMailer(true);
-            try {
-                $this->configureMailer($mail, $smtp);
-                $mail->setFrom($smtp['smtp']['user'], 'Coff PHP Framework');
-                $mail->addAddress($email, $name);
-                $mail->addReplyTo($smtp['smtp']['user'], 'Information');
+            if ($name && $email && $subject && $message) { 
+                $mail = new PHPMailer(true);
+                try {
+                    $this->configureMailer($mail, $smtp);
+                    $mail->setFrom($smtp['smtp']['user'], 'Coff PHP Framework');
+                    $mail->addAddress($email, $name);
+                    $mail->addReplyTo($smtp['smtp']['user'], 'Information');
 
-                $mail->isHTML(true);
-                $mail->Subject = $subject;
-                $mail->Body = nl2br("Name: $name\nEmail: $email\n\n$message");
+                    $mail->isHTML(true);
+                    $mail->Subject = $subject;
+                    $mail->Body = nl2br("Name: $name\nEmail: $email\n\n$message");
 
-                $mail->send();
-                $_SESSION['message'] = 'Email sent successfully.';
-                $_SESSION['message_type'] = 'success';
-                log_message("Email sent successfully to {$email}.", "info");
-            } catch (Exception $e) {
-                $_SESSION['message'] = 'Failed to send email: ' . $mail->ErrorInfo;
-                $_SESSION['message_type'] = 'danger';
-                log_message("Mailer Error: {$mail->ErrorInfo}", "error");
-            }
+                    $mail->send();
+                    $_SESSION['message'] = 'Email sent successfully.';
+                    $_SESSION['message_type'] = 'success';
+                    log_message("Email sent successfully to {$email}.", "info");
+                } catch (Exception $e) {
+                    $_SESSION['message'] = 'Failed to send email: ' . $mail->ErrorInfo;
+                    $_SESSION['message_type'] = 'danger';
+                    log_message("Mailer Error: {$mail->ErrorInfo}", "error");
+                }
+            } 
         }
 
         // Redirect to prevent form resubmission
@@ -80,4 +83,3 @@ class Handler
         $mail->Port = $smtp['smtp']['port'];
     }
 }
-
