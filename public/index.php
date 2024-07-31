@@ -64,11 +64,6 @@ $auth->handle();
 
 log_message("Index.php accessed");
 
-// $_POST dizisinin varlığını kontrol et ve tanımla
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST)) {
-    $_POST = [];
-}
-
 $router = new \Bramus\Router\Router();
 
 require_once __DIR__ . '/../config/routes/api.php';
