@@ -29,6 +29,12 @@ require_once __DIR__ . '/../config/container/Container.php';
 // Container sınıfını yükle
 use App\Container\Container;
 use App\ExampleController;
+// Middleware sınıflarını yükleyin
+use App\Middleware\Authentication;
+use App\Middleware\Logging;
+use App\Middleware\Cors;
+// Özel istisna sınıfını yükle
+use App\Exceptions\CustomException
 
 // Container'ı oluştur ve bağımlılıkları kaydet
 $container = new Container();
@@ -49,10 +55,7 @@ $container->bind('ExampleController', function($container) {
     return new ExampleController($container->resolve('App\ExampleService'));
 });
 
-// Middleware sınıflarını yükleyin
-use App\Middleware\Authentication;
-use App\Middleware\Logging;
-use App\Middleware\Cors;
+
 
 // Middleware işlemleri
 $cors = new Cors();
@@ -76,6 +79,37 @@ log_message("Index.php accessed");
 $router = new \Bramus\Router\Router();
 
 require_once __DIR__ . '/../config/routes/api.php';
+
+// 404 ve 500 hata sayfaları için özel yönlendirme
+$router->set404(function() {
+    http_response_code(404);
+    require __DIR__ . '/../app/includes/errors/404.php';
+    exit;
+});
+
+set_exception_handler(function($e) {
+    log_message("Exception: " . $e->getMessage(), "error");
+    http_response_code(500);
+    require __DIR__ . '/../app/includes/errors/500.php';
+    exit;
+});
+
+// Yönlendiriciyi çalıştır
+try {
+    $router->run();
+    log_message("API request successful.", "info");
+} catch (CustomException $e) {
+    log_message("CustomException: " . $e->getMessage(), "error");
+    http_response_code(500);
+    require __DIR__ . '/../app/includes/errors/500.php';
+    exit;
+} catch (Exception $e) {
+    log_message("API error: " . $e->getMessage(), "error");
+    log_message("Stack trace: " . $e->getTraceAsString(), "error");
+    http_response_code(500);
+    require __DIR__ . '/../app/includes/errors/500.php';
+    exit;
+}
 
 $post_path = isset($_POST['path']) ? ucfirst($_POST['path']) : null;
 $get_path = isset($_GET['path']) ? ucfirst($_GET['path']) : null;
@@ -108,7 +142,9 @@ if (class_exists($handlerClass)) {
         }
     } else {
         log_message("404 Not Found: " . $handlerClass);
-        echo '404 Not Found';
+        http_response_code(404);
+        require __DIR__ . '/../app/includes/errors/404.php';
+        exit;
     }
 }
 ?>
