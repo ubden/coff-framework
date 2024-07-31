@@ -89,6 +89,10 @@ log_message("Handler class: " . $handlerClass);
 if (class_exists($handlerClass)) {
     log_message("Handler class exists.");
     $handler = new $handlerClass();
+    if (!isset($_SESSION['user']) && $path !== 'Login') {
+        header('Location: /login.php');
+        exit;
+    }
     $handler->handle();
 } else {
     if (strpos($_SERVER['REQUEST_URI'], '/api/') === 0) {
