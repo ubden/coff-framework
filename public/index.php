@@ -20,11 +20,8 @@ if (session_status() == PHP_SESSION_NONE) {
 // Release Date: 2024
 
 require_once __DIR__ . '/../config/logger.php'; // Logger.php'yi yükler
-
 require_once __DIR__ . '/../vendor/autoload.php';
-
 require_once __DIR__ . '/../config/container/Container.php';
-
 
 // Container sınıfını yükle
 use App\Container\Container;
@@ -34,7 +31,7 @@ use App\Middleware\Authentication;
 use App\Middleware\Logging;
 use App\Middleware\Cors;
 // Özel istisna sınıfını yükle
-use App\Exceptions\CustomException
+use App\Exceptions\CustomException;
 
 // Container'ı oluştur ve bağımlılıkları kaydet
 $container = new Container();
@@ -55,8 +52,6 @@ $container->bind('ExampleController', function($container) {
     return new ExampleController($container->resolve('App\ExampleService'));
 });
 
-
-
 // Middleware işlemleri
 $cors = new Cors();
 $cors->handle();
@@ -67,14 +62,12 @@ $logging->handle();
 $auth = new Authentication();
 $auth->handle();
 
-
-
 log_message("Index.php accessed");
 
-// // $_POST dizisinin varlığını kontrol et ve tanımla
-// if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST)) {
-//     $_POST = [];
-// }
+// $_POST dizisinin varlığını kontrol et ve tanımla
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST)) {
+    $_POST = [];
+}
 
 $router = new \Bramus\Router\Router();
 
@@ -138,7 +131,8 @@ if (class_exists($handlerClass)) {
             log_message("API error: " . $e->getMessage(), "error");
             log_message("Stack trace: " . $e->getTraceAsString(), "error");
             http_response_code(500);
-            echo '500, internal server error!';
+            require __DIR__ . '/../app/includes/errors/500.php';
+            exit;
         }
     } else {
         log_message("404 Not Found: " . $handlerClass);
