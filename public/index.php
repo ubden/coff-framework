@@ -18,6 +18,23 @@ require_once __DIR__ . '/../config/logger.php'; // Logger.php'yi yükler
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+// Middleware sınıflarını yükleyin
+use App\Middleware\Authentication;
+use App\Middleware\Logging;
+use App\Middleware\Cors;
+
+// Middleware işlemleri
+$cors = new Cors();
+$cors->handle();
+
+$logging = new Logging();
+$logging->handle();
+
+$auth = new Authentication();
+$auth->handle();
+
+
+
 log_message("Index.php accessed");
 
 // // $_POST dizisinin varlığını kontrol et ve tanımla
