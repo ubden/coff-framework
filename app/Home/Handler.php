@@ -8,14 +8,12 @@
 // Sponsored Website: https://ubden.com
 // Version: ubden/coff-framework/version.txt
 // Release Date: 2024
-?>
-<?php
 
 namespace App\Home;
 
-use App\Includes\FileCache;
+use App\BaseHandler;
 
-class Handler
+class Handler extends BaseHandler
 {
     public function handle()
     {
@@ -23,3 +21,4 @@ class Handler
         require __DIR__ . '/view.php';
     }
 }
+?>
