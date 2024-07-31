@@ -18,6 +18,32 @@ require_once __DIR__ . '/../config/logger.php'; // Logger.php'yi yükler
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+require_once __DIR__ . '/../config/container/Container.php';
+
+
+// Container sınıfını yükle
+use App\Container\Container;
+use App\ExampleController;
+
+// Container'ı oluştur ve bağımlılıkları kaydet
+$container = new Container();
+
+$container->bind('AuthMiddleware', function() {
+    return new Authentication();
+});
+
+$container->bind('LoggingMiddleware', function() {
+    return new Logging();
+});
+
+$container->bind('CorsMiddleware', function() {
+    return new Cors();
+});
+
+$container->bind('ExampleController', function($container) {
+    return new ExampleController($container->resolve('App\ExampleService'));
+});
+
 // Middleware sınıflarını yükleyin
 use App\Middleware\Authentication;
 use App\Middleware\Logging;
