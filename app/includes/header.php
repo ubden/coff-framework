@@ -11,7 +11,6 @@
 
 // Requiring configuration file
 $config = require_once __DIR__ . '/../../config/config.php';
-
 ?>
 <!DOCTYPE html>
 <html lang="tr">
@@ -27,7 +26,7 @@ $config = require_once __DIR__ . '/../../config/config.php';
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="./index.php"><?php echo $config['app']['app_name']; ?> - Version <?php echo getVersion(); ?></a>
+            <a class="navbar-brand" href="./index.php"><?php echo $config['app']['app_name']; ?> - Version <?php echo getVersion(); ?></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -46,6 +45,11 @@ $config = require_once __DIR__ . '/../../config/config.php';
                 <span class="navbar-text">
                     <a href="https://github.com/ubden/coff-framework" target="_blank">ubden/coff-framework</a>
                 </span>
+                <?php if (isset($_SESSION['user'])): ?>
+                    <form class="form-inline my-2 my-lg-0" action="/../../public/logout.php" method="post">
+                        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Çıkış Yap</button>
+                    </form>
+                <?php endif; ?>
             </div>
         </nav>
     </header>
