@@ -90,7 +90,7 @@ if (class_exists($handlerClass)) {
     log_message("Handler class exists.");
     $handler = new $handlerClass();
     if (!isset($_SESSION['user']) && $path !== 'Login') {
-        header('Location: /login.php');
+        header('Location: ?path=Login');
         exit;
     }
     $handler->handle();
