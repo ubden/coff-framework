@@ -6,14 +6,17 @@ abstract class BaseHandler
 {
     public function __construct()
     {
-        session_start();
+        // Eğer oturum başlatılmadıysa başlat
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         $this->checkAuthentication();
     }
 
     private function checkAuthentication()
     {
         if (!isset($_SESSION['user'])) {
-            header('Location: /../../public/login.php');
+            header('Location: /login.php');
             exit;
         }
     }
