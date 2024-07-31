@@ -11,7 +11,7 @@ class Authentication {
         
         // Örnek doğrulama kontrolü
         if (!isset($_SESSION['user'])) {
-            header('Location: /login.php');
+            header('Location: /?path=Login');
             exit;
         }
     }
