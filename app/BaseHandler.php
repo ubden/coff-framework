@@ -16,7 +16,7 @@ abstract class BaseHandler
     private function checkAuthentication()
     {
         if (!isset($_SESSION['user'])) {
-            header('Location: /../../public/login.php');
+            header('Location: /../public/login.php');
             exit;
         }
     }
