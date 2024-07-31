@@ -15,7 +15,7 @@ namespace App\Includes;
 class FileCache {
     protected $cachePath;
 
-    public function __construct($cachePath = __DIR__ . '/../../cache/') {
+    public function __construct($cachePath = __DIR__ . '/../cache/') {
         $this->cachePath = $cachePath;
         if (!file_exists($this->cachePath)) {
             mkdir($this->cachePath, 0777, true);

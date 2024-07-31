@@ -1,0 +1,30 @@
+[2024-07-31 07:11:08] [info] - Request: GET /Contact
+
+[2024-07-31 07:11:08] [info] - Index.php accessed
+
+[2024-07-31 07:11:08] [info] - API request successful.
+
+[2024-07-31 07:11:08] [info] - Resolved path: Contact
+
+[2024-07-31 07:11:08] [info] - Handler class: App\Contact\Handler
+
+[2024-07-31 07:11:08] [info] - Handler class exists.
+
+[2024-07-31 07:11:08] [info] - Handler Invoked.
+
+[2024-07-31 07:11:15] [info] - Request: POST /?path=Contact
+
+[2024-07-31 07:11:15] [info] - Index.php accessed
+
+[2024-07-31 07:11:15] [info] - API request successful.
+
+[2024-07-31 07:11:15] [info] - Resolved path: Contact
+
+[2024-07-31 07:11:15] [info] - Handler class: App\Contact\Handler
+
+[2024-07-31 07:11:15] [info] - Handler class exists.
+
+[2024-07-31 07:11:15] [info] - Handler Invoked.
+
+[2024-07-31 07:11:15] [error] - Mailer Error: SMTP Error: Could not connect to SMTP host. Failed to connect to serverSMTP server error: Failed to connect to server Additional SMTP info: php_network_getaddresses: getaddrinfo for smtp.example.com failed: Name or service not known
+

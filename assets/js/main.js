@@ -13,3 +13,8 @@ Release Date: 2024
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Coff Framework Loaded');
 });
+
+function autoFill() {
+    document.getElementById('username').value = 'admin';
+    document.getElementById('password').value = 'password';
+}
